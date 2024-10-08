@@ -8,7 +8,7 @@
       <li
         to="/"
         class="d-flex align-items-center pb-3 me-md-auto text-white text-decoration-none w-100"
-        style="margin-block-end: 2rem; cursor: pointer"
+        style="margin-block-end: 1rem; cursor: pointer"
         @click="handlRes()"
       >
         <div class="icon d-inline center-row justify-content-center w-100">
@@ -145,8 +145,62 @@
       <!-- sidebar list end -->
 
       <!-- logout button -->
-      <button class="icon d-inline mb-auto mx-auto nav-item-btn">logout</button>
-      <button class="res d-none mb-auto mx-auto nav-item-btn">lOut</button>
+      <button
+        @click="useAuthStore().logOut()"
+        class="icon d-inline mb-auto mx-auto nav-item-btn"
+        style="
+          background-color: var(--col-bg);
+          border-radius: 50%;
+          padding: 2rem;
+        "
+      >
+        <svg
+          style="
+            width: 2.4rem;
+            height: 2.4rem;
+            min-width: 12px;
+            min-height: 12px;
+          "
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M4.01247 2.69991C3.66436 2.69991 3.3305 2.8382 3.08435 3.08435C2.8382 3.3305 2.69991 3.66436 2.69991 4.01247V19.9875C2.69991 20.3356 2.8382 20.6695 3.08435 20.9156C3.3305 21.1618 3.66436 21.3001 4.01247 21.3001H10.6687C11.4143 21.3001 12.0187 21.9045 12.0187 22.65C12.0187 23.3956 11.4143 24 10.6687 24H4.01247C2.94829 24 1.92771 23.5773 1.17522 22.8248C0.422741 22.0723 0 21.0517 0 19.9875V4.01247C0 2.9483 0.422741 1.92771 1.17522 1.17522C1.92771 0.422741 2.9483 0 4.01247 0H10.6687C11.4143 0 12.0187 0.604397 12.0187 1.34996C12.0187 2.09552 11.4143 2.69991 10.6687 2.69991H4.01247ZM16.3705 5.72042C16.8976 5.19322 17.7524 5.19322 18.2796 5.72042L23.6046 11.0454C24.1318 11.5726 24.1318 12.4274 23.6046 12.9546L18.2796 18.2796C17.7524 18.8068 16.8976 18.8068 16.3705 18.2796C15.8433 17.7524 15.8433 16.8976 16.3705 16.3705L19.391 13.35H9.33749C8.59193 13.35 7.98753 12.7456 7.98753 12C7.98753 11.2544 8.59193 10.65 9.33749 10.65H19.391L16.3705 7.62954C15.8433 7.10235 15.8433 6.24761 16.3705 5.72042Z"
+            fill="#464A61"
+          />
+        </svg>
+      </button>
+      <button
+        @click="useAuthStore().logOut()"
+        class="res d-none mb-auto mx-auto nav-item-btn"
+        style="
+          background-color: var(--col-bg);
+          border-radius: 50%;
+          padding: 1rem;
+        "
+      >
+        <svg
+          style="
+            width: 2.4rem;
+            height: 2.4rem;
+            min-width: 12px;
+            min-height: 12px;
+          "
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M4.01247 2.69991C3.66436 2.69991 3.3305 2.8382 3.08435 3.08435C2.8382 3.3305 2.69991 3.66436 2.69991 4.01247V19.9875C2.69991 20.3356 2.8382 20.6695 3.08435 20.9156C3.3305 21.1618 3.66436 21.3001 4.01247 21.3001H10.6687C11.4143 21.3001 12.0187 21.9045 12.0187 22.65C12.0187 23.3956 11.4143 24 10.6687 24H4.01247C2.94829 24 1.92771 23.5773 1.17522 22.8248C0.422741 22.0723 0 21.0517 0 19.9875V4.01247C0 2.9483 0.422741 1.92771 1.17522 1.17522C1.92771 0.422741 2.9483 0 4.01247 0H10.6687C11.4143 0 12.0187 0.604397 12.0187 1.34996C12.0187 2.09552 11.4143 2.69991 10.6687 2.69991H4.01247ZM16.3705 5.72042C16.8976 5.19322 17.7524 5.19322 18.2796 5.72042L23.6046 11.0454C24.1318 11.5726 24.1318 12.4274 23.6046 12.9546L18.2796 18.2796C17.7524 18.8068 16.8976 18.8068 16.3705 18.2796C15.8433 17.7524 15.8433 16.8976 16.3705 16.3705L19.391 13.35H9.33749C8.59193 13.35 7.98753 12.7456 7.98753 12C7.98753 11.2544 8.59193 10.65 9.33749 10.65H19.391L16.3705 7.62954C15.8433 7.10235 15.8433 6.24761 16.3705 5.72042Z"
+            fill="#464A61"
+          />
+        </svg>
+      </button>
       <!-- logout button -->
 
       <!-- dropdown menu start-->
@@ -168,7 +222,10 @@
           <span class="icon d-inline mx-1">loser</span>
           <span class="res d-none mx-1">los</span>
         </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+        <ul
+          class="dropdown-menu text-small shadow"
+          style="background-color: var(--col-bg)"
+        >
           <li><a class="dropdown-item" href="#">New project...</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
           <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -183,6 +240,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth/auth";
 
 const router = useRouter();
 

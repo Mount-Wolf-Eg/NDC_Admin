@@ -1,15 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@100;200/300;400;500;600;700;800;900&display=swap");
 
-.light-theme {
-  //colors
-  --col-white: #fff;
-  --col-black: #000;
-  --col-text: #464a61;
-  --col-bg: #f3f4f6;
-  --col-gray: #2c2c2c;
-  --col-success: #29c04a;
-  --col-error: #f32424;
-
+:root {
   //fonts
   --fs-8: 0.8rem;
   --fs-12: 1.2rem;
@@ -47,6 +38,17 @@
   --bx-shadow-light: rgba(0, 0, 0, 0.3) 0px 3px 8px;
 }
 
+.light-theme {
+  //colors
+  --col-white: #fff;
+  --col-black: #000;
+  --col-text: #464a61;
+  --col-bg: #f3f4f6;
+  --col-gray: #2c2c2c;
+  --col-success: #29c04a;
+  --col-error: #f32424;
+}
+
 // dark theme
 .dark-theme {
   //colors
@@ -54,45 +56,9 @@
   --col-black: #fff;
   --col-text: #fff;
   --col-bg: #292929;
-  --col-gray: #2c2c2c;
+  --col-gray: #dad8d8;
   --col-success: #29c04a;
   --col-error: #f32424;
-
-  //fonts
-  --fs-8: 0.8rem;
-  --fs-12: 1.2rem;
-  --fs-14: 1.4rem;
-  --fs-16: 1.6rem;
-  --fs-18: 1.8rem;
-  --fs-24: 2.4rem;
-  --fs-32: 3.2rem;
-
-  //font weight
-  --fw-thin: 100;
-  --fw-normal: 400;
-  --fw-bold: 700;
-  --fw-ex-bold: 900;
-
-  // border radius
-  --brd-radius: 1.2rem;
-  --brd-radius-sm: 0.8rem;
-
-  //line height
-
-  --line-h-15: 1.5rem;
-  --line-h-20: 2rem;
-  --line-h-28: 2.8rem;
-  --line-h-37: 3.7rem;
-
-  //font style
-  --f-style-upper: uppercase;
-  --f-style-capt: capitalize;
-
-  // box shadow
-  --bx-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
-    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-  --bx-shadow-btn: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  --bx-shadow-light: rgba(0, 0, 0, 0.3) 0px 3px 8px;
 }
 
 * {
@@ -265,6 +231,48 @@ body {
     width: 100%;
     padding: 0;
   }
+
+  // login
+  //sign in
+  .singBox {
+    background-color: var(--col-bg);
+    width: 65.7rem;
+    height: 50rem;
+    border-radius: var(--brd-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 6rem;
+    .sign-field {
+      width: 45rem;
+      height: 7.2rem;
+      border-radius: var(--brd-radius);
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      font-size: var(--fs-16);
+      font-weight: var(--fw-bold);
+      color: var(--col-text);
+      padding: 0 2.5rem;
+      &::placeholder {
+        color: var(--col-text);
+      }
+
+      &::-ms-input-placeholder {
+        color: var(--col-text);
+      }
+    }
+    .sign-btn {
+      width: 26.4rem;
+      height: 7.2rem;
+      border-radius: var(--brd-radius);
+      background-color: var(--col-text);
+      color: var(--col-white);
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      font-size: var(--fs-16);
+      font-weight: var(--fw-bold);
+    }
+  }
 }
 
 .center-col {
@@ -275,4 +283,22 @@ body {
 .center-row {
   display: flex;
   flex-direction: row;
+}
+
+.eye {
+  position: absolute;
+  bottom: 50%;
+  right: 5%;
+  transform: translateY(50%);
+}
+
+// validation styles
+.err-border {
+  border: 1px solid var(--col-error) !important;
+}
+.err-msg {
+  margin-top: var(--m-top-1);
+  color: var(--col-error);
+  padding: 0;
+  font-size: 12px;
 }

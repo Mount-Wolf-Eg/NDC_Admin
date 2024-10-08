@@ -83,7 +83,7 @@
             <li>
               <a class="dropdown-item">Settings</a>
             </li>
-            <li>
+            <li @click="useAuthStore().logOut()">
               <a class="dropdown-item">Sign out</a>
             </li>
           </ul>
@@ -94,6 +94,7 @@
 </template>
 
 <script setup>
+import { useAuthStore } from "@/stores/auth/auth";
 const toggleTheme = () => {
   const htmlElement = document.querySelector("html");
   htmlElement.classList.toggle("light-theme");
