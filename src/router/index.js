@@ -45,9 +45,18 @@ router.beforeEach((to, from, next) => {
 });
 
 router.beforeEach((to, from, next) => {
-  const { isLoggedin } = storeToRefs(useAuthStore());
-  const isAuthenticated = isLoggedin.value;
+  let checkToken = document.cookie
+    .split(";")
+    .map((coki) => coki.split("="))
+    .reduce(
+      (acc, [key, val]) => ({
+        ...acc,
+        [key.trim()]: decodeURIComponent(val),
+      }),
+      {}
+    )["Admin"];
 
+  const isAuthenticated = JSON.parse(checkToken)["token"];
   if (to.meta.requiresAuth && !isAuthenticated) {
     next("/login");
   } else if (!to.meta.requiresAuth && isAuthenticated && to.path === "/login") {
