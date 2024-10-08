@@ -1,10 +1,6 @@
 <template>
   <div>
-<<<<<<< HEAD
     <div class="main-layout" v-if="route.name !== 'login'">
-=======
-    <div class="main-layout" v-if="route.name == 'signin'">
->>>>>>> 3e90543a86df879086625070b2db4b96a1c5fcae
       <NavBar></NavBar>
       <div class="layout-body row" style="flex: 1">
         <SideBar></SideBar>

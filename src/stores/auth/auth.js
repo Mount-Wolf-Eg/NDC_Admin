@@ -24,11 +24,8 @@ export const useAuthStore = defineStore("authStore", {
           state.authUser = JSON.parse(localStorage.getItem("userInfo"));
           state.isLoggedin = true;
           state.getUserData();
-<<<<<<< HEAD
         } else {
           state.getUserData();
-=======
->>>>>>> 3e90543a86df879086625070b2db4b96a1c5fcae
         }
       } else {
         state.removeData();
