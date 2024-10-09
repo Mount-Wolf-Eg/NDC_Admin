@@ -90,7 +90,7 @@ export const useAuthStore = defineStore("authStore", {
                 logger: res.data.data.User.id,
                 token: res.data.data.access_token,
               },
-              60 * 60 * 1000 * 10
+              60 * 60 * 1000 * 1
             );
             this.isLoggedin = true;
             this.setStauts(true);
@@ -142,7 +142,7 @@ export const useAuthStore = defineStore("authStore", {
                 logger: res.data.data.User.id,
                 token: res.data.data.access_token,
               },
-              60 * 60 * 1000 * 10
+              60 * 60 * 1000 * 1
             );
             this.isLoggedin = true;
             this.setUserStorage(true);

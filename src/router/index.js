@@ -24,6 +24,24 @@ const router = createRouter({
       },
     },
     {
+      path: "/users",
+      name: "users",
+      component: () => import("@/components/local/users/Users.vue"),
+      meta: {
+        title: "Users",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/roles",
+      name: "roles",
+      component: () => import("@/components/local/roles/Roles.vue"),
+      meta: {
+        title: "Roles",
+        requiresAuth: true,
+      },
+    },
+    {
       path: "/:pathMatch(.*)*",
       name: "not-found",
       component: () => import("@/views/NotFound.vue"),
