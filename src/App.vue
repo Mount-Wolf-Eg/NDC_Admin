@@ -1,8 +1,9 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, watchEffect, ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import MainLayout from "./components/global/MainLayout.vue";
 import { useAuthStore } from "./stores/auth/auth";
+
 onMounted(() => {
   useAuthStore().userData;
 });

@@ -335,8 +335,8 @@ const wdth = ref();
 </script>
 
 <style lang="scss" scoped>
-li {
-  width: 100%;
-  text-align: center;
-}
+// li {
+//   width: 100%;
+//   text-align: center;
+// }
 </style>

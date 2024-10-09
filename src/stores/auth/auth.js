@@ -6,6 +6,7 @@ export const useAuthStore = defineStore("authStore", {
   state: () => ({
     authUser: [],
     isLoggedin: false,
+    rememberM: false,
   }),
   getters: {
     userData: (state) => {
@@ -62,8 +63,11 @@ export const useAuthStore = defineStore("authStore", {
           this.authUser = res.data.data.User;
           this.setUserStorage(this.authUser);
 
-          // set to 10 hours
-          expireAfter = 60 * 60 * 1000 * 10;
+          if (this.rememberM) {
+            expireAfter = res.data.data.expire_in * 1000;
+          } else {
+            expireAfter = 60 * 60 * 1000 * 1;
+          }
 
           if (res.data.data.expire_in) {
             if (res.data.data.expire_in > 0) {

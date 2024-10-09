@@ -86,6 +86,17 @@
             </span></span
           >
         </div>
+        <div
+          class="remember center-row align-items-center justify-content-center gap-2"
+        >
+          <label class="remember-label" for="remember-me">Remember me</label>
+          <input
+            type="checkbox"
+            name="remember"
+            id="remember-me"
+            v-model="rememberMe"
+          />
+        </div>
         <button type="button" @click="state = 'forget'" class="forget-btn">
           Forget Password
         </button>
@@ -111,15 +122,21 @@ import ForgetPassword from "./ForgetPassword.vue";
 // Validator
 import { useAuthStore } from "@/stores/auth/auth";
 import { storeToRefs } from "pinia";
+const rememberM = storeToRefs(useAuthStore());
+
 import useVuelidator from "@vuelidate/core";
 import { required, minLength, maxLength, email } from "@vuelidate/validators";
 required.$message = "Field is required";
 
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 const state = ref("login");
-
+const rememberMe = ref(false);
 const router = useRouter();
+
+watch(rememberMe, (val) => {
+  useAuthStore().rememberM = val;
+});
 
 const formData = ref({
   email: "",
@@ -181,5 +198,16 @@ const submitLogin = async () => {
   font-size: var(--fs-24);
   font-weight: var(--fw-bold);
   color: var(--col-text);
+}
+
+.remember-label {
+  font-size: var(--fs-12);
+  color: var(--col-text);
+  font-weight: bold;
+}
+
+#remember-me {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 </style>
