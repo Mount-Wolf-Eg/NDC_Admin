@@ -33,11 +33,29 @@ const router = createRouter({
       },
     },
     {
+      path: "/user/:id",
+      name: "user-data",
+      component: () => import("@/components/local/users/UserInfo.vue"),
+      meta: {
+        title: "Profile",
+        requiresAuth: true,
+      },
+    },
+    {
       path: "/roles",
       name: "roles",
       component: () => import("@/components/local/roles/Roles.vue"),
       meta: {
         title: "Roles",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/settings",
+      name: "settings",
+      component: () => import("@/views/SystemSettings.vue"),
+      meta: {
+        title: "Settings",
         requiresAuth: true,
       },
     },

@@ -26,7 +26,13 @@
               />
             </div>
           </td>
-          <td>{{ admin.name }}</td>
+          <td
+            @click="
+              router.push({ name: 'user-data', params: { id: admin.id } })
+            "
+          >
+            {{ admin.name }}
+          </td>
           <td>
             <a :href="`mailto:${admin.email}`">{{ admin.email }}</a>
           </td>
@@ -37,12 +43,15 @@
             {{ moment(new Date(admin.created_at)).format("DD-MM-YYYY") }}
           </td>
           <td
-            v-if="!admin.deleted_at"
-            style="color: var(--col-success) !important"
+            :style="`${
+              admin.status == 'active'
+                ? 'color: var(--col-success) !important'
+                : 'color: var(--col-error) !important'
+            }`"
           >
-            Active
+            {{ admin.status }}
           </td>
-          <td v-else style="color: var(--col-error)">Suspended</td>
+
           <td style="width: 15%">
             <div class="center-row justify-content-between align-items-center">
               <button type="button" class="btn border-0">
@@ -165,6 +174,8 @@ import moment from "moment";
 import ReusTable from "@/reusables/components/ReusTable.vue";
 import { ref, computed, onMounted, defineEmits } from "vue";
 import { useAdminStore } from "@/stores/admin/adminStore";
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 import { storeToRefs } from "pinia";
 const { allAdmins, admin } = storeToRefs(useAdminStore());

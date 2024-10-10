@@ -26,7 +26,7 @@
         </div>
         <div class="modal-body d-flex flex-wrap justify-content-between">
           <span class="row w-50">
-            <!-- Name -->
+            <!-- name -->
             <span class="col">
               <InptField
                 v-model="formData.name"
@@ -46,7 +46,7 @@
             </span>
           </span>
           <span class="row w-50">
-            <!-- Name -->
+            <!-- email -->
             <span class="col">
               <InptField
                 v-model="formData.email"
@@ -60,6 +60,85 @@
                 v-for="(err, i) in validationObj.$errors"
                 :key="i"
                 ><span v-if="err.$property == 'email'" class="err-msg">
+                  {{ err.$message }}
+                </span></span
+              >
+            </span>
+          </span>
+          <span class="row w-50">
+            <!-- phone -->
+            <span class="col">
+              <InptField
+                v-model="formData.phone"
+                :holder="'Phone'"
+                :label="'Phone Number'"
+                :appear="checkErrName(['phone']) ? 'err-border' : ''"
+              ></InptField>
+              <span
+                class="center-row justify-content-start"
+                style="margin-top: -1rem; margin-bottom: 1rem"
+                v-for="(err, i) in validationObj.$errors"
+                :key="i"
+                ><span v-if="err.$property == 'phone'" class="err-msg">
+                  {{ err.$message }}
+                </span></span
+              >
+            </span>
+          </span>
+          <span class="row w-50">
+            <!-- role -->
+            <span
+              class="col d-flex flex-column align-items-center justify-content-center"
+            >
+              <label
+                for="inpt-field"
+                style="
+                  background-color: transparent !important;
+                  color: var(--col-text) !important;
+                  font-size: var(--fs-16) !important;
+                  font-weight: var(--fw-bold) !important;
+                  line-height: var(--line-h-20) !important;
+                "
+                class="inpt-label w-100"
+                >Role</label
+              >
+              <MultiSelect
+                class="w-100"
+                id="inpt-field"
+                :select="rolesData"
+                :appear="checkErrName(['role']) ? 'err-border' : ''"
+              />
+              <span
+                class="center-row justify-content-start"
+                style="margin-top: -1rem; margin-bottom: 1rem"
+                v-for="(err, i) in validationObj.$errors"
+                :key="i"
+                ><span v-if="err.$property == 'role'" class="err-msg">
+                  {{ err.$message }}
+                </span></span
+              >
+            </span>
+          </span>
+          <span class="row w-100">
+            <!-- role -->
+            <span class="col">
+              <UploadeFile @fileData="formData.img = $event"></UploadeFile>
+              <span
+                v-if="formData.img"
+                style="
+                  color: var(--col-success);
+                  font-size: var(--fs-14);
+                  font-weight: bold;
+                  margin: 10px;
+                "
+                >Ready</span
+              >
+              <span
+                class="center-row justify-content-start"
+                style="margin-top: -1rem; margin-bottom: 1rem"
+                v-for="(err, i) in validationObj.$errors"
+                :key="i"
+                ><span v-if="err.$property == 'img'" class="err-msg">
                   {{ err.$message }}
                 </span></span
               >
@@ -89,17 +168,20 @@
             <!-- Name -->
             <span class="col">
               <InptField
-                v-model="formData.phone"
-                :holder="'Phone'"
-                :label="'Phone Number'"
-                :appear="checkErrName(['phone']) ? 'err-border' : ''"
+                v-model="formData.confirm_password"
+                :holder="'Confirm Password'"
+                :label="'Confirm Password'"
+                :appear="checkErrName(['confirm_password']) ? 'err-border' : ''"
               ></InptField>
               <span
                 class="center-row justify-content-start"
                 style="margin-top: -1rem; margin-bottom: 1rem"
                 v-for="(err, i) in validationObj.$errors"
                 :key="i"
-                ><span v-if="err.$property == 'phobe'" class="err-msg">
+                ><span
+                  v-if="err.$property == 'confirm_password'"
+                  class="err-msg"
+                >
                   {{ err.$message }}
                 </span></span
               >
@@ -122,22 +204,39 @@
 </template>
 
 <script setup>
+import { onMounted, computed } from "vue";
 import InptField from "@/reusables/inputs/InptField.vue";
-
+import MultiSelect from "@/reusables/inputs/MultiSelect.vue";
+import UploadeFile from "@/reusables/inputs/UploadeFile.vue";
 import { storeToRefs } from "pinia";
+import { roleStore } from "@/stores/roles/roleStore";
 import { useAdminStore } from "@/stores/admin/adminStore";
 
+const { roles, role } = storeToRefs(roleStore());
 const { allAdmins } = storeToRefs(useAdminStore());
 
 // validation
 import useVuelidator from "@vuelidate/core";
-import { email, required, minLength, maxLength } from "@vuelidate/validators";
+import {
+  email,
+  required,
+  minLength,
+  maxLength,
+  alphaNum,
+  numeric,
+  sameAs,
+} from "@vuelidate/validators";
 required.$message = "Field is required";
 
 import { ref, watch, defineProps } from "vue";
 
 const emit = defineEmits(["resetUser"]);
 const isLoading = ref(false);
+
+onMounted(async () => {
+  const res = await roleStore().getAllRoles();
+  rolesData.value.options = roles.value;
+});
 
 const props = defineProps({
   user: {
@@ -151,8 +250,41 @@ const formData = ref({
   name: "",
   email: "",
   phone: "",
+  role: "",
   password: "",
+  img: "",
+  confirm_password: "",
 });
+
+const rolesData = ref({
+  value: null,
+  label: "name",
+  placeholder: "Select Role",
+  key: "id",
+  options: "roles.value",
+  groups: true,
+  options: roles.value,
+  searchable: true,
+  mode: "single",
+  valueProp: "id",
+  labelProp: "name",
+  closeOnSelect: true,
+  disabled: false,
+  change: (val) => {
+    if (val) setRole(val);
+  },
+  clear: async () => {
+    formData.value.role = "";
+  },
+});
+
+const setRole = async (val) => {
+  formData.value.role = val;
+  const res = await roleStore().showRole({ id: val });
+  if (res) {
+    // rolesData.value.options = role.value;
+  }
+};
 
 watch(
   () => props.user,
@@ -162,18 +294,38 @@ watch(
     }
     formData.value.name = props.user.name;
     formData.value.email = props.user.email;
+    formData.value.phone = props.user.phone;
+    formData.value.role = props.user.role;
     formData.value.password = props.user.password;
+    formData.value.img = props.user.image;
+    formData.value.password = props.user.password;
+    formData.value.confirm_password = props.user.confirm_password;
   }
 );
 
+const samePass = computed(() => {
+  return formData.value.password;
+});
+
 const validationRules = ref({
-  name: { required },
-  email: { required, email },
+  name: {
+    required,
+    alphaNum,
+    minLength: minLength(3),
+    maxLength: maxLength(100),
+  },
+  email: { required, email, maxLength: maxLength(50) },
+  phone: { required, numeric },
+
   password: {
     required,
     required,
     minLength: minLength(6),
     maxLength: maxLength(20),
+  },
+  confirm_password: {
+    required,
+    sameAs: sameAs(samePass),
   },
 });
 
@@ -194,7 +346,11 @@ const resetFormData = () => {
   formData.value = {
     name: "",
     email: "",
+    phone: "",
+    role: "",
+    img: "",
     password: "",
+    confirm_password: "",
   };
   validationObj.value.$reset();
   document.getElementById("addUser").reset();
@@ -207,7 +363,11 @@ const addUser = async () => {
     const res = await useAdminStore().addAdmin({
       name: formData.value.name,
       email: formData.value.email,
+      phone: formData.value.phone,
+      role: formData.value.role,
+      image: formData.value.img,
       password: formData.value.password,
+      confirm_password: formData.value.confirm_password,
     });
     if (res) {
       closeModal();
@@ -223,8 +383,11 @@ const updateUser = async () => {
     const res = await useAdminStore().updateAdmin({
       name: formData.value.name,
       email: formData.value.email,
-      password: formData.value.password,
       phone: formData.value.phone,
+      role: formData.value.role,
+      image: formData.value.img,
+      password: formData.value.password,
+      confirm_password: formData.value.confirm_password,
       id: props.user.id,
     });
     if (res) {

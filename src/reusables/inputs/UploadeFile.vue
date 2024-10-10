@@ -1,16 +1,19 @@
 <template>
   <div class="upload-field center-row justify-content-between">
     <label :for="`img-field-${props.for}`">
-      <div class="center-row justify-content-between px-5 style-17">
+      <div
+        class="center-row justify-content-between px-5 style-17"
+        style="color: #464a61; font-size: var(--fs-12); font-weight: bold"
+      >
         <span>Add photo</span><span>Drop here</span>
       </div></label
     >
     <input
-      class="style-17 img-field-st"
+      class="style-17 img-field-st border-none"
       type="file"
       name="upload file"
       :id="`img-field-${props.for}`"
-      accept=".png, .jpeg, .jpg, .pdf"
+      accept=".png, .jpeg, .jpg"
       @change="uploadFile"
       :disabled="disable"
     />
@@ -61,13 +64,13 @@ const uploadFile = (e) => {
     return;
   }
 
-  if (uploadedFile.size <= 5 * 1024 * 1024) {
+  if (uploadedFile.size <= 10 * 1024 * 1024) {
     file.value = uploadedFile;
     emits("fileData", file.value);
     file.value = null;
   } else {
     file.value = null;
-    mainStore().showAlert("File size cannot be more than 5 MB", 2);
+    mainStore().showAlert("File size cannot be more than 10 MB", 2);
     emits("fileData", file.value);
   }
 };
@@ -75,14 +78,17 @@ const uploadFile = (e) => {
 
 <style lang="scss" scoped>
 .upload-field {
+  margin: 1rem 0 0;
   position: relative;
   border-radius: var(--brd-radius);
-  border: 1px solid var(--col-text);
+  border: 1px solid #464a61;
   padding: 0.5rem;
+  background-color: white;
   input {
+    background-color: white;
     width: 25% !important;
     color: transparent;
-    border: 1px solid var(--col-text);
+    border: 1px solid #464a61;
   }
 
   input::file-selector-button {
@@ -90,6 +96,7 @@ const uploadFile = (e) => {
     border-radius: var(--brd-radius);
     padding: 1rem 2rem;
     border: none;
+    color: #464a61;
   }
 
   .img-field-st {

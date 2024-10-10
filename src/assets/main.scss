@@ -213,12 +213,12 @@ body {
       .content-title {
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         background-color: var(--col-white);
-        font-family: Roboto;
         font-size: var(--fs-24);
         font-weight: var(--fw-bold);
         line-height: var(--line-h-28);
         color: var(--col-text);
         padding: var(--fs-24);
+        text-transform: uppercase;
       }
       .content-body {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
@@ -394,16 +394,17 @@ body {
         padding-left: 2rem;
       }
     }
-    .modal-add-btn {
-      width: 29.2rem;
-      height: 6.4rem;
-      border-radius: var(--brd-radius-sm);
-      background-color: var(--col-text);
-      color: var(--col-white);
-      font-weight: var(--fw-bold);
-      font-size: var(--fs-24);
-    }
   }
+}
+.modal-add-btn {
+  // width: 29.2rem;
+  // height: 6.4rem;
+  padding: 1.5rem 10rem;
+  border-radius: var(--brd-radius-sm);
+  background-color: var(--col-text);
+  color: var(--col-white);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-24);
 }
 
 // table styles
@@ -453,5 +454,15 @@ body {
 .qr-btn {
   &:hover {
     stroke: gray;
+  }
+}
+
+// user info
+.user-info {
+  .user-name {
+    font-size: var(--fs-12);
+    color: var(--col-text);
+    font-weight: var(--fw-bold);
+    margin-bottom: 0.5rem;
   }
 }
