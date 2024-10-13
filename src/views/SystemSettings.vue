@@ -74,25 +74,6 @@
             :for="'main -logo'"
             @fileData="formData.mainLogo.sourceM = $event"
           ></UploadeFile>
-          <!-- i frame -->
-          <div class="show_attachments mt-3">
-            <div class="row">
-              <div class="col col-3">
-                <div class="position-relative w-100">
-                  <img
-                    :src="formData.mainLogo.sourceM"
-                    style="
-                      border-radius: 10px;
-                      max-width: 100px !important;
-                      max-height: 100px !important;
-                    "
-                    alt=""
-                    class="mb-2"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
 
           <span
             class="center-row justify-content-start"
@@ -217,7 +198,7 @@
 
 <script setup>
 // Validator
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import InptField from "@/reusables/inputs/InptField.vue";
 import UploadeFile from "@/reusables/inputs/UploadeFile.vue";
 import { settingStore } from "@/stores/settings/settingStore";
@@ -243,8 +224,6 @@ const secondL = ref("");
 
 onMounted(async () => {
   await settingStore().getAllSettings();
-
-  console.log(allSettings.value.settings.mobile);
 
   formData.value.name.ar = allSettings.value.settings?.name_ar;
   formData.value.name.en = allSettings.value.settings?.name_en;

@@ -123,16 +123,13 @@
             <!-- role -->
             <span class="col">
               <UploadeFile @fileData="formData.img = $event"></UploadeFile>
-              <span
+              <img
                 v-if="formData.img"
-                style="
-                  color: var(--col-success);
-                  font-size: var(--fs-14);
-                  font-weight: bold;
-                  margin: 10px;
-                "
-                >Ready</span
-              >
+                class="mt-3"
+                :src="formData.img"
+                alt=""
+                style="max-width: 10rem; border-radius: 7px"
+              />
               <span
                 class="center-row justify-content-start"
                 style="margin-top: -1rem; margin-bottom: 1rem"
