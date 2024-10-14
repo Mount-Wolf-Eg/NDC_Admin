@@ -60,6 +60,15 @@ const router = createRouter({
       },
     },
     {
+      path: "/contact-settings",
+      name: "contactSettings",
+      component: () => import("@/views/ContactSettings.vue"),
+      meta: {
+        title: "Contacts Setting",
+        requiresAuth: true,
+      },
+    },
+    {
       path: "/:pathMatch(.*)*",
       name: "not-found",
       component: () => import("@/views/NotFound.vue"),

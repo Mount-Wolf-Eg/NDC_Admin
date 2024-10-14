@@ -183,7 +183,7 @@
         </button>
         <button
           v-else
-          class="save-popup-btn mt-4"
+          class="modal-add-btn mt-4"
           type="submit"
           style="font-weight: normal !important"
           disabled

@@ -87,7 +87,6 @@ export const useAdminStore = defineStore("adminStore", {
           );
         });
     },
-
     // admin
     async getAdmin(id) {
       let result;
