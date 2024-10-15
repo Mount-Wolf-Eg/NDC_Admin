@@ -100,6 +100,26 @@ const router = createRouter({
         requiresAuth: true,
       },
     },
+    {
+      path: "/CustomerReview",
+      name: "customer",
+      component: () =>
+        import("@/components/local/customerReview/CustomerReview.vue"),
+      meta: {
+        title: "Customer Review",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/customer/:id",
+      name: "customerInfo",
+      component: () =>
+        import("@/components/local/customerReview/CustomerReviewInfo.vue"),
+      meta: {
+        title: "Customer Info",
+        requiresAuth: true,
+      },
+    },
 
     {
       path: "/Faq",
