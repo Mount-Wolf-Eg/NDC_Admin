@@ -33,6 +33,24 @@ const router = createRouter({
       },
     },
     {
+      path: "/Faq",
+      name: "FAQ",
+      component: () => import("@/components/local/FAQ/Faq.vue"),
+      meta: {
+        title: "FAQ",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/faq/:id",
+      name: "faq-data",
+      component: () => import("@/components/local/FAQ/FaqInfo.vue"),
+      meta: {
+        title: "FAQ Details",
+        requiresAuth: true,
+      },
+    },
+    {
       path: "/user/:id",
       name: "user-data",
       component: () => import("@/components/local/users/UserInfo.vue"),
