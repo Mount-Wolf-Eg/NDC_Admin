@@ -71,7 +71,7 @@ const router = createRouter({
     {
       path: "/settings",
       name: "settings",
-      component: () => import("@/views/SystemSettings.vue"),
+      component: () => import("@/components/local/settings/SystemSettings.vue"),
       meta: {
         title: "Settings",
         requiresAuth: true,
@@ -80,7 +80,8 @@ const router = createRouter({
     {
       path: "/contact-settings",
       name: "contactSettings",
-      component: () => import("@/views/ContactSettings.vue"),
+      component: () =>
+        import("@/components/local/settings/ContactSettings.vue"),
       meta: {
         title: "Contacts Setting",
         requiresAuth: true,

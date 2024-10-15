@@ -182,8 +182,6 @@ export const settingStore = defineStore("settingStore", {
           result = res;
           mainStore().showAlert("Setting updated suuccessfully", 1);
           this.getAllSettings();
-          this.getSuspendedSettings();
-          this.activeSettings();
         })
         .catch((err) => {
           mainStore().showAlert(

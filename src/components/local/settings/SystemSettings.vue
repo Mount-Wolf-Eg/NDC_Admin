@@ -225,16 +225,16 @@ const secondL = ref("");
 onMounted(async () => {
   await settingStore().getAllSettings();
 
-  formData.value.name.ar = allSettings.value.settings?.name_ar;
-  formData.value.name.en = allSettings.value.settings?.name_en;
-  formData.value.mainLogo.sourceM = allSettings.value.settings?.main_logo_src;
-  formData.value.mainLogo.descM = allSettings.value.settings?.second_logo_desc;
-  formData.value.secondLogo.sourceS =
-    allSettings.value.setting?.second_logo_src;
-  formData.value.secondLogo.descS =
-    allSettings.value.settings?.second_logo_desc;
-  mainL.value = allSettings.value.settings?.main_logo_src;
-  secondL.value = allSettings.value.settings?.second_logo_src;
+  // formData.value.name.ar = allSettings.value.settings?.name_ar;
+  // formData.value.name.en = allSettings.value.settings?.name_en;
+  // formData.value.mainLogo.sourceM = allSettings.value.settings?.main_logo_src;
+  // formData.value.mainLogo.descM = allSettings.value.settings?.second_logo_desc;
+  // formData.value.secondLogo.sourceS =
+  //   allSettings.value.setting?.second_logo_src;
+  // formData.value.secondLogo.descS =
+  //   allSettings.value.settings?.second_logo_desc;
+  // mainL.value = allSettings.value.settings?.main_logo_src;
+  // secondL.value = allSettings.value.settings?.second_logo_src;
 });
 
 const formData = ref({
