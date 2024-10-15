@@ -54,7 +54,13 @@
 
           <td style="width: 15%">
             <div class="center-row justify-content-between align-items-center">
-              <button type="button" class="btn border-0">
+              <button
+                type="button"
+                class="btn border-0"
+                @click="
+                  router.push({ name: 'user-data', params: { id: admin.id } })
+                "
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   style="width: 2rem; height: 2rem"
