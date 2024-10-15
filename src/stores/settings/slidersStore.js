@@ -261,7 +261,7 @@ export const sliderStore = defineStore("sliders", {
       return result;
     },
     // delete slider
-    async deleteSlider(data, type) {
+    async deleteSlider(data) {
       let result;
       await axiosInstance
         .post(`${mainStore().apiLink}/admin/slider/forceDelete`, data, {
@@ -275,7 +275,6 @@ export const sliderStore = defineStore("sliders", {
           result = res;
           mainStore().showAlert("item deleted suuccessfully", 1);
           this.getAllSliders();
-          this.getSingleSliderType(type);
         })
         .catch((err) => {
           mainStore().showAlert(

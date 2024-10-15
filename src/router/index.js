@@ -100,6 +100,7 @@ const router = createRouter({
         requiresAuth: true,
       },
     },
+
     {
       path: "/CustomerReview",
       name: "customer",
@@ -117,6 +118,25 @@ const router = createRouter({
         import("@/components/local/customerReview/CustomerReviewInfo.vue"),
       meta: {
         title: "Customer Info",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/mainSlider",
+      name: "MainSlider",
+      component: () => import("@/components/local/mainSlider/MainSlider.vue"),
+      meta: {
+        title: "Main Slider",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/slider/:id",
+      name: "SliderInfo",
+      component: () =>
+        import("@/components/local/mainSlider/MainSliderInfo.vue"),
+      meta: {
+        title: "Slider Info",
         requiresAuth: true,
       },
     },
