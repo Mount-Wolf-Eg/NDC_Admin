@@ -1,13 +1,9 @@
 <template>
   <div class="user-info">
     <div class="user-data m-5">
-      <div class="d-flex flex-column" v-for="(faq, i, j) in question" :key="j">
-        <div
-          v-if="faq"
-          style="width: 30%"
-          class="d-flex align-items-center justify-content-between gap-4"
-        >
-          <label class="user-name" :for="i">{{ i }}:</label>
+      <div class="row">
+        <span class="col-6 center-col my-3">
+          <label class="user-name" for="quesEn"> Question En:</label>
           <input
             type="text"
             style="
@@ -19,10 +15,63 @@
               color: var(--col-text);
             "
             disabled
-            :id="i"
-            :value="faq"
+            id="quesEn"
+            :value="question.title?.en"
           />
-        </div>
+        </span>
+        <span class="col-6 col-6 center-col my-3">
+          <label class="user-name" for="quesAr"> Question AR:</label>
+          <input
+            type="text"
+            style="
+              border: 1px solid var(--col-text);
+              border-radius: 12px;
+              padding: 1rem;
+              margin: 1rem;
+              font-weight: bold;
+              color: var(--col-text);
+            "
+            disabled
+            id="quesAr"
+            :value="question.title?.ar"
+          />
+        </span>
+      </div>
+      <div class="row">
+        <span class="col-6 center-col my-3">
+          <label class="user-name" for="quesEn"> Answer En:</label>
+          <input
+            type="text"
+            style="
+              border: 1px solid var(--col-text);
+              border-radius: 12px;
+              padding: 1rem;
+              margin: 1rem;
+              font-weight: bold;
+              color: var(--col-text);
+            "
+            disabled
+            id="quesEn"
+            :value="question.description?.en"
+          />
+        </span>
+        <span class="col-6 center-col my-3">
+          <label class="user-name" for="descAr"> Answer AR:</label>
+          <input
+            type="text"
+            style="
+              border: 1px solid var(--col-text);
+              border-radius: 12px;
+              padding: 1rem;
+              margin: 1rem;
+              font-weight: bold;
+              color: var(--col-text);
+            "
+            disabled
+            id="descAr"
+            :value="question.description?.ar"
+          />
+        </span>
       </div>
     </div>
   </div>

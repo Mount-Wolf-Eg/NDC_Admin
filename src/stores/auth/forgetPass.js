@@ -13,7 +13,7 @@ export const forgetPassStore = defineStore("forgetPass", {
           [key.trim()]: decodeURIComponent(val),
         }),
         {}
-      )["Menus"],
+      )["Admin"],
     newToken: "",
   }),
   getters: {},

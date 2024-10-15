@@ -5,7 +5,7 @@
   >
     <div v-if="state == 'login'">
       <form action="#" @submit.prevent="submitLogin" class="singBox">
-        <h2 class="login-title">MENUS</h2>
+        <h2 class="login-title">Ndc</h2>
         <!-- email -->
         <div class="center-col">
           <input

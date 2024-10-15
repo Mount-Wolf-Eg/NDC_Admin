@@ -33,6 +33,75 @@ const router = createRouter({
       },
     },
     {
+      path: "/user/:id",
+      name: "user-data",
+      component: () => import("@/components/local/users/UserInfo.vue"),
+      meta: {
+        title: "Profile",
+        requiresAuth: true,
+      },
+    },
+
+    {
+      path: "/partner",
+      name: "partners",
+      component: () => import("@/components/local/partners/Partners.vue"),
+      meta: {
+        title: "Partners",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/partner/:id",
+      name: "partner-data",
+      component: () => import("@/components/local/partners/PartnerInfo.vue"),
+      meta: {
+        title: "partner",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/successMetrics",
+      name: "success-metrics",
+      component: () =>
+        import("@/components/local/success_metrics/SuccessMetrics.vue"),
+      meta: {
+        title: "Success Metrics",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/success-metrics/:id",
+      name: "SuccessInfo",
+      component: () =>
+        import("@/components/local/success_metrics/SuccessMetricsInfo.vue"),
+      meta: {
+        title: "Success Metrics",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/achievements",
+      name: "achievement",
+      component: () =>
+        import("@/components/local/achievements/Achievement.vue"),
+      meta: {
+        title: "Achievements",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/achievement/:id",
+      name: "achievementInfo",
+      component: () =>
+        import("@/components/local/achievements/AchievementInfo.vue"),
+      meta: {
+        title: "Achievements Info",
+        requiresAuth: true,
+      },
+    },
+
+    {
       path: "/Faq",
       name: "FAQ",
       component: () => import("@/components/local/FAQ/Faq.vue"),
@@ -47,15 +116,6 @@ const router = createRouter({
       component: () => import("@/components/local/FAQ/FaqInfo.vue"),
       meta: {
         title: "FAQ Details",
-        requiresAuth: true,
-      },
-    },
-    {
-      path: "/user/:id",
-      name: "user-data",
-      component: () => import("@/components/local/users/UserInfo.vue"),
-      meta: {
-        title: "Profile",
         requiresAuth: true,
       },
     },
