@@ -64,9 +64,10 @@ export const useAuthStore = defineStore("authStore", {
           this.setUserStorage(this.authUser);
 
           if (this.rememberM) {
-            expireAfter = res.data.data.expire_in * 1000;
+            expireAfter = res.data.data.expires_in;
           } else {
-            expireAfter = 60 * 60 * 1000 * 1;
+            expireAfter = 0;
+            // expireAfter = 60 * 60 * 1000 * 1;
           }
 
           if (res.data.data.expire_in) {
@@ -90,7 +91,7 @@ export const useAuthStore = defineStore("authStore", {
                 logger: res.data.data.User.id,
                 token: res.data.data.access_token,
               },
-              60 * 60 * 1000 * 1
+              expireAfter
             );
             this.isLoggedin = true;
             this.setStauts(true);
