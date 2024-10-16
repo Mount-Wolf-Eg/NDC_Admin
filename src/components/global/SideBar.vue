@@ -108,7 +108,9 @@
 
             Users
           </span>
-          <span class="res d-none nav-item-btn">
+          <span
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center"
+          >
             <svg
               style="width: 3rem; height: 3rem; min-width: 9px; min-height: 8px"
               viewBox="0 0 18 16"
@@ -175,7 +177,9 @@
             </svg>
             Roles
           </span>
-          <span class="res d-none nav-item-btn">
+          <span
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
             <svg
               style="width: 3rem; height: 3rem; min-width: 9px; min-height: 9px"
               viewBox="0 0 16 16"
@@ -269,7 +273,9 @@
 
             FAQ
           </span>
-          <span class="res d-none nav-item-btn">
+          <span
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
             <svg
               style="
                 width: 3.2rem;
@@ -360,7 +366,9 @@
             Partners
           </span>
 
-          <span class="res d-none nav-item-btn">
+          <span
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
             <svg
               style="
                 width: 3.6rem;
@@ -404,7 +412,9 @@
             Success Metrics
           </span>
 
-          <span class="res d-none nav-item-btn">
+          <span
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
             <svg
               style="
                 width: 3.6rem;
@@ -447,7 +457,9 @@
             Achievements
           </span>
 
-          <span class="res d-none nav-item-btn">
+          <span
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
             <svg
               style="
                 width: 3.6rem;
@@ -490,7 +502,9 @@
             Main Slider
           </span>
 
-          <span class="res d-none nav-item-btn">
+          <span
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
             <svg
               style="
                 width: 3.6rem;
@@ -508,6 +522,54 @@
             </svg>
           </span>
         </li>
+
+        <li
+          class="nav-link align-middle px-0"
+          @click="router.push({ name: 'MainResources' })"
+        >
+          <span
+            class="icon d-inline nav-item-btn d-flex align-item-center justify-content-center justify-content-sm-start gap-2"
+          >
+            <svg
+              style="
+                width: 1.6rem;
+                height: 1.6rem;
+                min-width: 9px;
+                min-height: 9px;
+              "
+              fill="#464a61"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M383.5 192c.3-5.3 .5-10.6 .5-16c0-51-15.9-96-40.2-127.6C319.5 16.9 288.2 0 256 0s-63.5 16.9-87.8 48.4C143.9 80 128 125 128 176c0 5.4 .2 10.7 .5 16L240 192l0 128-32 0c-7 0-13.7 1.5-19.7 4.2L68.2 192l28.3 0c-.3-5.3-.5-10.6-.5-16c0-64 22.2-121.2 57.1-159.3C62 49.3 18.6 122.6 4.2 173.6C1.5 183.1 9 192 18.9 192l6 0L165.2 346.3c-3.3 6.5-5.2 13.9-5.2 21.7l0 96c0 26.5 21.5 48 48 48l96 0c26.5 0 48-21.5 48-48l0-96c0-7.8-1.9-15.2-5.2-21.7L487.1 192l6 0c9.9 0 17.4-8.9 14.7-18.4C493.4 122.6 450 49.3 358.9 16.7C393.8 54.8 416 112.1 416 176c0 5.4-.2 10.7-.5 16l28.3 0L323.7 324.2c-6-2.7-12.7-4.2-19.7-4.2l-32 0 0-128 111.5 0z"
+              />
+            </svg>
+
+            Main Resources
+          </span>
+
+          <span
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
+            <svg
+              style="
+                width: 3.6rem;
+                height: 3.6rem;
+                min-width: 9px;
+                min-height: 9px;
+              "
+              fill="#464a61"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M383.5 192c.3-5.3 .5-10.6 .5-16c0-51-15.9-96-40.2-127.6C319.5 16.9 288.2 0 256 0s-63.5 16.9-87.8 48.4C143.9 80 128 125 128 176c0 5.4 .2 10.7 .5 16L240 192l0 128-32 0c-7 0-13.7 1.5-19.7 4.2L68.2 192l28.3 0c-.3-5.3-.5-10.6-.5-16c0-64 22.2-121.2 57.1-159.3C62 49.3 18.6 122.6 4.2 173.6C1.5 183.1 9 192 18.9 192l6 0L165.2 346.3c-3.3 6.5-5.2 13.9-5.2 21.7l0 96c0 26.5 21.5 48 48 48l96 0c26.5 0 48-21.5 48-48l0-96c0-7.8-1.9-15.2-5.2-21.7L487.1 192l6 0c9.9 0 17.4-8.9 14.7-18.4C493.4 122.6 450 49.3 358.9 16.7C393.8 54.8 416 112.1 416 176c0 5.4-.2 10.7-.5 16l28.3 0L323.7 324.2c-6-2.7-12.7-4.2-19.7-4.2l-32 0 0-128 111.5 0z"
+              />
+            </svg>
+          </span>
+        </li>
+
         <li
           class="nav-link align-middle px-0"
           @click="router.push({ name: 'customer' })"
@@ -534,7 +596,9 @@
             Customer Review
           </span>
 
-          <span class="res d-none nav-item-btn">
+          <span
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
             <svg
               style="
                 width: 3.6rem;
@@ -576,7 +640,10 @@
             <li>
               <a href="#" class="nav-link px-0">
                 <span class="mx-2 icon d-inline nav-item-btn-sub">item2</span>
-                <span class="mx-2 res d-none nav-item-btn-sub">dddddddd</span>
+                <span
+                  class="mx-2 res d-none nav-item-btn-sub d-flex align-item-center justify-content-center my-3"
+                  >dddddddd</span
+                >
               </a>
             </li>
           </ul>
@@ -632,7 +699,9 @@
             </svg>
             Settings
           </span>
-          <div class="res d-none nav-item-btn">
+          <div
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
             <svg
               style="width: 3rem; height: 3rem"
               viewBox="0 0 16 17"
@@ -692,7 +761,9 @@
             </svg>
             Contacts Settings
           </span>
-          <div class="res d-none nav-item-btn">
+          <div
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
             <svg
               style="width: 3rem; height: 3rem"
               fill="#464a61"
@@ -738,7 +809,7 @@
       <!-- logout button -->
       <button
         @click="useAuthStore().logOut()"
-        class="icon d-inline mb-auto mx-auto nav-item-btn"
+        class="icon d-inline mb-auto mx-auto nav-item-btn my-3"
         style="
           background-color: var(--col-bg);
           border-radius: 50%;
@@ -766,7 +837,7 @@
       </button>
       <button
         @click="useAuthStore().logOut()"
-        class="res d-none mb-auto mx-auto nav-item-btn"
+        class="res d-none mb-auto mx-auto nav-item-btn my-3"
         style="
           background-color: var(--col-bg);
           border-radius: 50%;
@@ -795,7 +866,7 @@
       <!-- logout button -->
 
       <!-- dropdown menu start-->
-      <div class="dropdown pb-4 mx-auto">
+      <div class="dropdown pb-4 mx-auto my-5">
         <a
           href="#"
           class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"

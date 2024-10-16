@@ -121,6 +121,7 @@ const router = createRouter({
         requiresAuth: true,
       },
     },
+
     {
       path: "/mainSlider",
       name: "MainSlider",
@@ -137,6 +138,26 @@ const router = createRouter({
         import("@/components/local/mainSlider/MainSliderInfo.vue"),
       meta: {
         title: "Slider Info",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/mainResources",
+      name: "MainResources",
+      component: () =>
+        import("@/components/local/mainResources/MainResource.vue"),
+      meta: {
+        title: "Main Resources",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/resource/:id",
+      name: "ResourceInfo",
+      component: () =>
+        import("@/components/local/mainResources/MainResourceInfo.vue"),
+      meta: {
+        title: "Resource Info",
         requiresAuth: true,
       },
     },
