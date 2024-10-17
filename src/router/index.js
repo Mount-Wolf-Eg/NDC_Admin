@@ -163,6 +163,44 @@ const router = createRouter({
     },
 
     {
+      path: "/Service",
+      name: "servicePage",
+      component: () => import("@/components/local/services/Services.vue"),
+      meta: {
+        title: "Services",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/service/:id",
+      name: "serviceInfo",
+      component: () => import("@/components/local/services/ServicesInfo.vue"),
+      meta: {
+        title: "Service Details",
+        requiresAuth: true,
+      },
+    },
+
+    {
+      path: "/packages",
+      name: "packagePage",
+      component: () => import("@/components/local/packages/Package.vue"),
+      meta: {
+        title: "Packages",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/package/:id",
+      name: "packageInfo",
+      component: () => import("@/components/local/packages/PackesInfo.vue"),
+      meta: {
+        title: "Package Details",
+        requiresAuth: true,
+      },
+    },
+
+    {
       path: "/contact-us",
       name: "ContactUs",
       component: () => import("@/components/local/contact_us/ContactUs.vue"),

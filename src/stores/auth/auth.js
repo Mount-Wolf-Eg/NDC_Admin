@@ -64,7 +64,7 @@ export const useAuthStore = defineStore("authStore", {
           this.setUserStorage(this.authUser);
 
           if (this.rememberM) {
-            expireAfter = res.data.data.expires_in;
+            expireAfter = 7 * 24 * 60 * 60;
           } else {
             expireAfter = 0;
             // expireAfter = 60 * 60 * 1000 * 1;
