@@ -163,6 +163,26 @@ const router = createRouter({
     },
 
     {
+      path: "/contact-us",
+      name: "ContactUs",
+      component: () => import("@/components/local/contact_us/ContactUs.vue"),
+      meta: {
+        title: "Contact Us",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/contactMessage/:id",
+      name: "MessageInfo",
+      component: () =>
+        import("@/components/local/contact_us/ContactUsInfo.vue"),
+      meta: {
+        title: "Contact Us Info",
+        requiresAuth: true,
+      },
+    },
+
+    {
       path: "/Faq",
       name: "FAQ",
       component: () => import("@/components/local/FAQ/Faq.vue"),
