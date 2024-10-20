@@ -29,9 +29,9 @@
             <!-- name -->
             <span class="col">
               <InptField
-                v-model="formData.name.en"
-                :holder="'Main Resource name '"
-                :label="'Main Resource name'"
+                v-model="formData.serviceName.en"
+                :holder="'Service en'"
+                :label="'Service Name (En)'"
                 :appear="checkErrName(['en']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -45,13 +45,14 @@
               >
             </span>
           </span>
+
           <span class="row w-50">
             <!-- email -->
             <span class="col">
               <InptField
-                v-model="formData.name.ar"
-                :holder="'Main Resource  name'"
-                :label="'Main Resource  name'"
+                v-model="formData.serviceName.ar"
+                :holder="'Service ar'"
+                :label="'Service Name (ar)'"
                 :appear="checkErrName(['ar']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -69,12 +70,12 @@
           <span class="row w-50">
             <!-- Name -->
             <span class="col">
-              <InptField
+              <TextArea
                 v-model="formData.serviceContent.enn"
-                :holder="'Main Resource en'"
-                :label="'Main Resource description'"
+                :holder="'Service name en'"
+                :label="'Service Content (EN)'"
                 :appear="checkErrName(['enn']) ? 'err-border' : ''"
-              ></InptField>
+              ></TextArea>
               <span
                 class="center-row justify-content-start"
                 style="margin-top: -1rem; margin-bottom: 1rem"
@@ -86,15 +87,16 @@
               >
             </span>
           </span>
+
           <span class="row w-50">
             <!-- Name -->
             <span class="col">
-              <InptField
+              <TextArea
                 v-model="formData.serviceContent.arr"
-                :holder="'Main Resource ar'"
-                :label="'Main Resource description'"
+                :holder="'Service name ar'"
+                :label="'Service Name (AR)'"
                 :appear="checkErrName(['arr']) ? 'err-border' : ''"
-              ></InptField>
+              ></TextArea>
               <span
                 class="center-row justify-content-start"
                 style="margin-top: -1rem; margin-bottom: 1rem"
@@ -106,13 +108,14 @@
               >
             </span>
           </span>
-          <span class="row w-100">
+
+          <span class="row w-50">
             <!-- Name -->
             <span class="col">
               <InptField
                 v-model="formData.imgDescription.arrr"
-                :holder="'Main Resource ar'"
-                :label="'Main Resource description'"
+                :holder="'Description (AR)'"
+                :label="'description ar'"
                 :appear="checkErrName(['arrr']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -125,11 +128,14 @@
                 </span></span
               >
             </span>
+          </span>
+          <span class="row w-50">
+            <!-- Name -->
             <span class="col">
               <InptField
                 v-model="formData.imgDescription.ennn"
-                :holder="'Main Resource ar'"
-                :label="'Main Resource description'"
+                :holder="'Description (EN)'"
+                :label="'description en'"
                 :appear="checkErrName(['ennn']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -143,6 +149,7 @@
               >
             </span>
           </span>
+
           <span class="row w-100">
             <!-- role -->
             <span class="col">
@@ -184,6 +191,7 @@
 <script setup>
 import { onMounted, computed } from "vue";
 import InptField from "@/reusables/inputs/InptField.vue";
+import TextArea from "@/reusables/inputs/TextArea.vue";
 import UploadeFile from "@/reusables/inputs/UploadeFile.vue";
 import { useServiceStore } from "@/stores/settings/serviceStore";
 
@@ -206,7 +214,7 @@ const props = defineProps({
 });
 
 const formData = ref({
-  name: {
+  serviceName: {
     ar: "",
     en: "",
   },
@@ -227,8 +235,8 @@ watch(
     if (!props.service.id) {
       return;
     }
-    formData.value.name.ar = props.service.name.ar;
-    formData.value.name.en = props.service.name.en;
+    formData.value.serviceName.ar = props.service.name.ar;
+    formData.value.serviceName.en = props.service.name.en;
 
     formData.value.serviceContent.arr = props.service.content.ar;
     formData.value.serviceContent.enn = props.service.content.en;
@@ -241,13 +249,9 @@ watch(
 );
 
 const validationRules = ref({
-  name: {
+  serviceName: {
     ar: { required, minLength: minLength(3), maxLength: maxLength(100) },
     en: { required, minLength: minLength(3), maxLength: maxLength(100) },
-  },
-
-  img: {
-    required,
   },
 
   serviceContent: {
@@ -275,6 +279,10 @@ const validationRules = ref({
       maxLength: maxLength(250),
     },
   },
+
+  img: {
+    required,
+  },
 });
 
 const checkErrName = (key) => {
@@ -292,7 +300,7 @@ const closeModal = () => {
 const resetFormData = () => {
   // reset form
   formData.value = {
-    name: {
+    serviceName: {
       ar: "",
       en: "",
     },
@@ -315,8 +323,8 @@ const addService = async () => {
   const result = await validationObj.value.$validate();
   if (result) {
     const res = await useServiceStore().addService({
-      "name[ar]": formData.value.name.ar,
-      "name[en]": formData.value.name.en,
+      "name[ar]": formData.value.serviceName.ar,
+      "name[en]": formData.value.serviceName.en,
       "description[ar]": formData.value.imgDescription.arrr,
       "description[en]": formData.value.imgDescription.ennn,
       "content[ar]": formData.value.serviceContent.arr,

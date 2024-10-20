@@ -668,14 +668,52 @@
         </li>
 
         <!-- dropdown list -->
-        <li>
+        <li class="nav-link align-middle px-0">
           <a
             href="#submenu1"
             data-bs-toggle="collapse"
-            class="nav-link px-0 align-middle"
+            class="nav-link px-0 align-middle w-100"
           >
-            <span class="icon d-inline nav-item-btn">Dashboard</span>
-            <span class="res d-none nav-item-btn">ddd</span>
+            <span
+              class="icon d-inline nav-item-btn d-flex align-item-center justify-content-center justify-content-sm-start gap-2"
+            >
+              <svg
+                style="
+                  width: 1.6rem;
+                  height: 1.6rem;
+                  min-width: 9px;
+                  min-height: 9px;
+                "
+                fill="#464a61"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 384 512"
+              >
+                <path
+                  d="M320 464c8.8 0 16-7.2 16-16l0-288-80 0c-17.7 0-32-14.3-32-32l0-80L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0zM0 64C0 28.7 28.7 0 64 0L229.5 0c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"
+                />
+              </svg>
+
+              Static Pages</span
+            >
+            <span
+              class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+            >
+              <svg
+                style="
+                  width: 3.6rem;
+                  height: 3.6rem;
+                  min-width: 9px;
+                  min-height: 9px;
+                "
+                fill="#464a61"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 384 512"
+              >
+                <path
+                  d="M320 464c8.8 0 16-7.2 16-16l0-288-80 0c-17.7 0-32-14.3-32-32l0-80L64 48c-8.8 0-16 7.2-16 16l0 384c0 8.8 7.2 16 16 16l256 0zM0 64C0 28.7 28.7 0 64 0L229.5 0c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3L384 448c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64z"
+                />
+              </svg>
+            </span>
           </a>
           <ul
             class="collapse nav flex-column mx-2"
@@ -684,8 +722,46 @@
           >
             <li class="w-100">
               <a href="#" class="nav-link px-0">
-                <span class="mx-2 icon d-inline nav-item-btn-sub">item</span>
-                <span class="mx-2 res d-none nav-item-btn-sub">dddddddd</span>
+                <span
+                  class="icon d-inline nav-item-btn d-flex align-item-center justify-content-center justify-content-sm-start gap-2"
+                >
+                  <svg
+                    style="
+                      width: 1.6rem;
+                      height: 1.6rem;
+                      min-width: 9px;
+                      min-height: 9px;
+                    "
+                    fill="#464a61"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512"
+                  >
+                    <path
+                      d="M512 80c8.8 0 16 7.2 16 16l0 320c0 8.8-7.2 16-16 16L64 432c-8.8 0-16-7.2-16-16L48 96c0-8.8 7.2-16 16-16l448 0zM64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM208 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80l-64 0zM376 144c-13.3 0-24 10.7-24 24s10.7 24 24 24l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0z"
+                    />
+                  </svg>
+
+                  About Us
+                </span>
+                <span
+                  class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+                >
+                  <svg
+                    style="
+                      width: 3.6rem;
+                      height: 3.6rem;
+                      min-width: 9px;
+                      min-height: 9px;
+                    "
+                    fill="#464a61"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512"
+                  >
+                    <path
+                      d="M512 80c8.8 0 16 7.2 16 16l0 320c0 8.8-7.2 16-16 16L64 432c-8.8 0-16-7.2-16-16L48 96c0-8.8 7.2-16 16-16l448 0zM64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM208 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16l192 0c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80l-64 0zM376 144c-13.3 0-24 10.7-24 24s10.7 24 24 24l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0z"
+                    />
+                  </svg>
+                </span>
               </a>
             </li>
             <li>

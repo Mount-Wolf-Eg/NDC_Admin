@@ -3,7 +3,6 @@
     <HelperButtons>
       <template #add-btn>
         <button
-          disabled
           type="button"
           id="addPackage"
           class="add-btn"
