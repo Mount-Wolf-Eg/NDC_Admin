@@ -60,6 +60,7 @@ const router = createRouter({
         requiresAuth: true,
       },
     },
+
     {
       path: "/successMetrics",
       name: "success-metrics",
@@ -80,6 +81,26 @@ const router = createRouter({
         requiresAuth: true,
       },
     },
+
+    {
+      path: "/jobs",
+      name: "Jobs",
+      component: () => import("@/components/local/Jobs/Jobs.vue"),
+      meta: {
+        title: "Jobs",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/job/:id",
+      name: "JobInfo",
+      component: () => import("@/components/local/Jobs/JobInfo.vue"),
+      meta: {
+        title: "Job Info",
+        requiresAuth: true,
+      },
+    },
+
     {
       path: "/achievements",
       name: "achievement",
