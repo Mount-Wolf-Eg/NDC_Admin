@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { mainStore } from "../mainStore";
 import axiosInstance from "../axios_instance";
 
-export const contactSettings = defineStore("contactSettings", {
+export const aboutUsStore = defineStore("aboutUs", {
   state: () => ({
     checkToken: document.cookie
       .split(";")
@@ -14,14 +14,17 @@ export const contactSettings = defineStore("contactSettings", {
         }),
         {}
       )["Admin"],
-    allContacts: [],
+    aboutUs: [],
+    ourValues: [],
+    ourGoals: [],
+    ourMission: [],
+    ourVission: [],
   }),
 
   actions: {
-    // all settings
-    async getAllContacts() {
+    async getAllAboutUs() {
       await axiosInstance
-        .get(`${mainStore().apiLink}/admin/Settings/all`, {
+        .get(`${mainStore().apiLink}/admin/StaticPages/all`, {
           headers: {
             Authorization: `Bearer ${
               this.checkToken ? JSON.parse(this.checkToken)["token"] : ""
@@ -29,7 +32,10 @@ export const contactSettings = defineStore("contactSettings", {
           },
         })
         .then((res) => {
-          this.allContacts = res.data.data.settings;
+          this.aboutUs = res.data.data.find((e) => e.id == 1);
+          this.ourVission = res.data.data.find((e) => e.id == 4);
+          this.ourMission = res.data.data.find((e) => e.id == 5);
+          this.ourGoals = res.data.data.find((e) => e.id == 6);
         })
         .catch((err) => {
           mainStore().showAlert(
@@ -40,10 +46,10 @@ export const contactSettings = defineStore("contactSettings", {
           );
         });
     },
-    async updateContacts(data) {
+    async updateAllAbout(data) {
       let result;
       await axiosInstance
-        .post(`${mainStore().apiLink}/admin/Settings/update`, data, {
+        .post(`${mainStore().apiLink}/admin/StaticPages/update`, data, {
           headers: {
             Authorization: `Bearer ${
               this.checkToken ? JSON.parse(this.checkToken)["token"] : ""
@@ -51,9 +57,7 @@ export const contactSettings = defineStore("contactSettings", {
           },
         })
         .then((res) => {
-          this.getAllContacts();
           result = res;
-          mainStore().showAlert("Contacts Updated Successfully", 1);
         })
         .catch((err) => {
           mainStore().showAlert(
@@ -67,11 +71,9 @@ export const contactSettings = defineStore("contactSettings", {
       return result;
     },
 
-    // delete setting
-    async deleteContacts(id) {
-      let result;
+    async getAboutValue() {
       await axiosInstance
-        .post(`${mainStore().apiLink}/admin/Settings/destroy`, id, {
+        .get(`${mainStore().apiLink}/admin/slider/showSlidersTypes`, {
           headers: {
             Authorization: `Bearer ${
               this.checkToken ? JSON.parse(this.checkToken)["token"] : ""
@@ -79,9 +81,29 @@ export const contactSettings = defineStore("contactSettings", {
           },
         })
         .then((res) => {
-          this.getAllContacts();
+          this.ourValues = res.data.data.our_values;
+        })
+        .catch((err) => {
+          mainStore().showAlert(
+            Object.values(err.response.data.errors)[0][0]
+              ? Object.values(err.response.data.errors)[0][0]
+              : "Something went wrong, please try again",
+            2
+          );
+        });
+    },
+    async updateAboutValue() {
+      let result;
+      await axiosInstance
+        .post(`${mainStore().apiLink}/admin/slider/update`, data, {
+          headers: {
+            Authorization: `Bearer ${
+              this.checkToken ? JSON.parse(this.checkToken)["token"] : ""
+            }`,
+          },
+        })
+        .then((res) => {
           result = res;
-          mainStore().showAlert("Contacts updated suuccessfully", 1);
         })
         .catch((err) => {
           mainStore().showAlert(

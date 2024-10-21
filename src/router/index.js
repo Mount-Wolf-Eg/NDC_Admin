@@ -287,6 +287,17 @@ const router = createRouter({
         requiresAuth: true,
       },
     },
+
+    {
+      path: "/about_us",
+      name: "aboutUs",
+      component: () => import("@/components/local/about_us/AboutUs.vue"),
+      meta: {
+        title: "About Us",
+        requiresAuth: true,
+      },
+    },
+
     {
       path: "/:pathMatch(.*)*",
       name: "not-found",

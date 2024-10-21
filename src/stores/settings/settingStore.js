@@ -32,7 +32,8 @@ export const settingStore = defineStore("settingStore", {
           },
         })
         .then((res) => {
-          this.allSettings = res.data.data.find((e) => e.id == 1);
+          this.allSettings = res.data.data.settings;
+          // this.allSettings = res.data.data.find((e) => e.id == 1);
         })
         .catch((err) => {
           mainStore().showAlert(
