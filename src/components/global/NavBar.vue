@@ -68,11 +68,22 @@
             aria-expanded="false"
           >
             <img
-              src="https://github.com/mdo.png"
+              v-if="authUser.image"
+              :src="authUser.image"
               style="width: 5.2rem; height: 5.2rem; border-radius: 50%"
               alt=""
             />
-            <p class="user-info">Name admin</p>
+            <span
+              v-else
+              style="
+                width: 5.2rem;
+                height: 5.2rem;
+                border-radius: 50%;
+                background-color: gray;
+              "
+            ></span>
+
+            <p class="user-info">{{ authUser.name }}</p>
           </a>
 
           <ul
@@ -95,6 +106,8 @@
 
 <script setup>
 import { useAuthStore } from "@/stores/auth/auth";
+import { storeToRefs } from "pinia";
+const { authUser } = storeToRefs(useAuthStore());
 const toggleTheme = () => {
   const htmlElement = document.querySelector("html");
   htmlElement.classList.toggle("light-theme");

@@ -30,8 +30,8 @@
             <span class="col">
               <InptField
                 v-model="formData.name.en"
-                :holder="'Achievement name '"
-                :label="'Achievement name'"
+                :holder="'title en'"
+                :label="'Title (En)'"
                 :appear="checkErrName(['en']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -50,8 +50,8 @@
             <span class="col">
               <InptField
                 v-model="formData.name.ar"
-                :holder="'Achievement name'"
-                :label="'Achievement name'"
+                :label="'Title (Ar)'"
+                :holder="'title ar'"
                 :appear="checkErrName(['ar']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -72,7 +72,7 @@
               <InptField
                 v-model="formData.imgDescription.enn"
                 :holder="'Review en'"
-                :label="'Client Review'"
+                :label="'Client Review (EN)'"
                 :appear="checkErrName(['enn']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -92,7 +92,7 @@
               <InptField
                 v-model="formData.imgDescription.arr"
                 :holder="'Review ar'"
-                :label="'Client Review'"
+                :label="'Client Review (AR)'"
                 :appear="checkErrName(['arr']) ? 'err-border' : ''"
               ></InptField>
               <span

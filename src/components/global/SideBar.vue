@@ -145,6 +145,7 @@
           </span>
         </li>
         <li
+          style="display: none"
           class="nav-link align-middle px-0"
           @click="router.push({ name: 'roles' })"
         >
@@ -1038,7 +1039,7 @@
       <!-- logout button -->
 
       <!-- dropdown menu start-->
-      <div class="dropdown pb-4 mx-auto my-5">
+      <!-- <div class="dropdown pb-4 mx-auto my-5">
         <a
           href="#"
           class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
@@ -1065,7 +1066,7 @@
           <li><a class="dropdown-item" href="#">Profile</a></li>
           <li><a class="dropdown-item" href="#">Sign out</a></li>
         </ul>
-      </div>
+      </div> -->
       <!-- dropdown menu end-->
     </div>
   </div>

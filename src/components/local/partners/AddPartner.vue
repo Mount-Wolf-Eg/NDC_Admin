@@ -30,8 +30,8 @@
             <span class="col">
               <InptField
                 v-model="formData.name.en"
-                :holder="'Company name '"
-                :label="'English name'"
+                :holder="'name en '"
+                :label="'Name (EN)'"
                 :appear="checkErrName(['en']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -50,8 +50,8 @@
             <span class="col">
               <InptField
                 v-model="formData.name.ar"
-                :holder="'Company name'"
-                :label="'Arabic name'"
+                :holder="'name ar'"
+                :label="'Name (AR)'"
                 :appear="checkErrName(['ar']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -92,17 +92,37 @@
             <!-- Name -->
             <span class="col">
               <InptField
-                v-model="formData.imgDescription"
-                :holder="'Company description'"
-                :label="'description'"
-                :appear="checkErrName(['imgDescription']) ? 'err-border' : ''"
+                v-model="formData.imgDescription.enn"
+                :holder="'description en'"
+                :label="'Description (EN)'"
+                :appear="checkErrName(['enn']) ? 'err-border' : ''"
               ></InptField>
               <span
                 class="center-row justify-content-start"
                 style="margin-top: -1rem; margin-bottom: 1rem"
                 v-for="(err, i) in validationObj.$errors"
                 :key="i"
-                ><span v-if="err.$property == 'imgDescription'" class="err-msg">
+                ><span v-if="err.$property == 'enn'" class="err-msg">
+                  {{ err.$message }}
+                </span></span
+              >
+            </span>
+          </span>
+          <span class="row w-50">
+            <!-- Name -->
+            <span class="col">
+              <InptField
+                v-model="formData.imgDescription.arr"
+                :holder="'description ar'"
+                :label="'Description (AR)'"
+                :appear="checkErrName(['arr']) ? 'err-border' : ''"
+              ></InptField>
+              <span
+                class="center-row justify-content-start"
+                style="margin-top: -1rem; margin-bottom: 1rem"
+                v-for="(err, i) in validationObj.$errors"
+                :key="i"
+                ><span v-if="err.$property == 'arr'" class="err-msg">
                   {{ err.$message }}
                 </span></span
               >
@@ -159,7 +179,10 @@ const formData = ref({
     en: "",
   },
   img: "",
-  imgDescription: "",
+  imgDescription: {
+    arr: "",
+    enn: "",
+  },
 });
 
 watch(
@@ -173,9 +196,8 @@ watch(
 
     formData.value.img = props.partner.image;
 
-    formData.value.imgDescription = props.partner.description.ar
-      ? props.partner.description.ar
-      : props.partner.description.en;
+    formData.value.imgDescription.arr = props.partner.description.ar;
+    formData.value.imgDescription.enn = props.partner.description.en;
   }
 );
 
@@ -188,7 +210,12 @@ const validationRules = ref({
     required,
   },
   imgDescription: {
-    maxLength: maxLength(250),
+    arr: {
+      maxLength: maxLength(250),
+    },
+    enn: {
+      maxLength: maxLength(250),
+    },
   },
 });
 
@@ -212,7 +239,10 @@ const resetFormData = () => {
       en: "",
     },
     img: "",
-    imgDescription: "",
+    imgDescription: {
+      arr: "",
+      enn: "",
+    },
   };
   validationObj.value.$reset();
   document.getElementById("addPartner").reset();
@@ -228,7 +258,8 @@ const addPartner = async () => {
         "title[ar]": formData.value.name.ar,
         "title[en]": formData.value.name.en,
         image: formData.value.img,
-        "description[ar]": formData.value.imgDescription,
+        "description[en]": formData.value.imgDescription.enn,
+        "description[ar]": formData.value.imgDescription.arr,
       },
       "partners"
     );
@@ -249,7 +280,8 @@ const updatePartner = async () => {
         "title[ar]": formData.value.name.ar,
         "title[en]": formData.value.name.en,
         image: formData.value.img,
-        "description[ar]": formData.value.imgDescription,
+        "description[en]": formData.value.imgDescription.enn,
+        "description[ar]": formData.value.imgDescription.arr,
         id: props.partner.id,
       },
       "partners"

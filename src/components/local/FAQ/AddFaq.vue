@@ -29,8 +29,8 @@
             <span class="col-6">
               <InptField
                 v-model="formData.question.en"
-                :holder="'Question'"
-                :label="'Question en'"
+                :holder="'Question en'"
+                :label="'Question (EN)'"
                 :appear="checkErrName(['en']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -46,10 +46,9 @@
 
             <span class="col-6">
               <InptField
-                style="direction: rtl !important"
                 v-model="formData.question.ar"
-                :label="'السؤال بالعربي'"
-                :holder="'السؤال بالعربي'"
+                :label="'Question (AR)'"
+                :holder="'question ar'"
                 :appear="checkErrName(['ar']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -68,8 +67,8 @@
             <span class="col-6">
               <InptField
                 v-model="formData.answer.enn"
-                :holder="'Answer'"
-                :label="'Answer en'"
+                :holder="'answer ar'"
+                :label="'Answer (EN)'"
                 :appear="checkErrName(['enn']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -85,10 +84,9 @@
 
             <span class="col-6">
               <InptField
-                style="direction: rtl !important"
                 v-model="formData.answer.arr"
-                :label="'الاجابه بالعربي'"
-                :holder="'الاجابه بالعربي'"
+                :label="'answer ar'"
+                :holder="'Answer (AR)'"
                 :appear="checkErrName(['arr']) ? 'err-border' : ''"
               ></InptField>
               <span

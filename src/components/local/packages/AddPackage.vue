@@ -30,8 +30,8 @@
             <span class="col">
               <InptField
                 v-model="formData.name.en"
-                :holder="'Main Resource name '"
-                :label="'Main Resource name'"
+                :holder="'name en'"
+                :label="'Name (EN)'"
                 :appear="checkErrName(['en']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -50,8 +50,8 @@
             <span class="col">
               <InptField
                 v-model="formData.name.ar"
-                :holder="'Main Resource  name'"
-                :label="'Main Resource  name'"
+                :holder="'name ar'"
+                :label="'Name (AR)'"
                 :appear="checkErrName(['ar']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -71,8 +71,8 @@
             <span class="col">
               <InptField
                 v-model="formData.packContent.enn"
-                :holder="'Main Resource en'"
-                :label="'Main Resource description'"
+                :holder="'description en'"
+                :label="'Description (EN)'"
                 :appear="checkErrName(['enn']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -91,8 +91,8 @@
             <span class="col">
               <InptField
                 v-model="formData.packContent.arr"
-                :holder="'Main Resource ar'"
-                :label="'Main Resource description'"
+                :holder="'description ar'"
+                :label="'Description (AR)'"
                 :appear="checkErrName(['arr']) ? 'err-border' : ''"
               ></InptField>
               <span
@@ -106,21 +106,42 @@
               >
             </span>
           </span>
-          <span class="row w-100">
+
+          <span class="row w-50">
             <!-- Name -->
             <span class="col">
               <InptField
-                v-model="formData.imgDescription"
-                :holder="'Main Resource'"
-                :label="'Main Resource description'"
-                :appear="checkErrName(['imgDescription']) ? 'err-border' : ''"
+                v-model="formData.imgDescription.ennn"
+                :holder="'description en'"
+                :label="'Image Description (EN)'"
+                :appear="checkErrName(['ennn']) ? 'err-border' : ''"
               ></InptField>
               <span
                 class="center-row justify-content-start"
                 style="margin-top: -1rem; margin-bottom: 1rem"
                 v-for="(err, i) in validationObj.$errors"
                 :key="i"
-                ><span v-if="err.$property == 'imgDescription'" class="err-msg">
+                ><span v-if="err.$property == 'ennn'" class="err-msg">
+                  {{ err.$message }}
+                </span></span
+              >
+            </span>
+          </span>
+          <span class="row w-50">
+            <!-- Name -->
+            <span class="col">
+              <InptField
+                v-model="formData.imgDescription.arrr"
+                :holder="'description ar'"
+                :label="'Image Description (AR)'"
+                :appear="checkErrName(['arrr']) ? 'err-border' : ''"
+              ></InptField>
+              <span
+                class="center-row justify-content-start"
+                style="margin-top: -1rem; margin-bottom: 1rem"
+                v-for="(err, i) in validationObj.$errors"
+                :key="i"
+                ><span v-if="err.$property == 'arrr'" class="err-msg">
                   {{ err.$message }}
                 </span></span
               >
@@ -197,7 +218,10 @@ const formData = ref({
     arr: "",
     enn: "",
   },
-  imgDescription: "",
+  imgDescription: {
+    arrr: "",
+    ennn: "",
+  },
   img: "",
 });
 
@@ -213,7 +237,8 @@ watch(
     formData.value.packContent.arr = props.service.content.ar;
     formData.value.packContent.enn = props.service.content.en;
 
-    formData.value.imgDescription = props.service.description.ar;
+    formData.value.imgDescription.arrr = props.service.description.ar;
+    formData.value.imgDescription.ennn = props.service.description.en;
 
     formData.value.img = props.service.image;
   }
@@ -243,9 +268,16 @@ const validationRules = ref({
   },
 
   imgDescription: {
-    required,
-    minLength: minLength(10),
-    maxLength: maxLength(250),
+    arrr: {
+      required,
+      minLength: minLength(10),
+      maxLength: maxLength(250),
+    },
+    ennn: {
+      required,
+      minLength: minLength(10),
+      maxLength: maxLength(250),
+    },
   },
 });
 
@@ -272,7 +304,10 @@ const resetFormData = () => {
       arr: "",
       enn: "",
     },
-    imgDescription: "",
+    imgDescription: {
+      arrr: "",
+      ennn: "",
+    },
     img: "",
   };
   validationObj.value.$reset();
@@ -286,9 +321,10 @@ const addPack = async () => {
     const res = await usePackageStore().addPackage({
       "name[ar]": formData.value.name.ar,
       "name[en]": formData.value.name.en,
-      "description[ar]": formData.value.imgDescription,
       "content[ar]": formData.value.packContent.arr,
       "content[en]": formData.value.packContent.enn,
+      "description[ar]": formData.value.imgDescription.arrr,
+      "description[en]": formData.value.imgDescription.ennn,
       image: formData.value.img,
     });
     if (res) {
@@ -305,7 +341,8 @@ const updatePack = async () => {
     const res = await usePackageStore().updatePackage({
       "name[ar]": formData.value.name.ar,
       "name[en]": formData.value.name.en,
-      "description[ar]": formData.value.imgDescription,
+      "description[ar]": formData.value.imgDescription.arrr,
+      "description[en]": formData.value.imgDescription.ennn,
       "content[ar]": formData.value.packContent.arr,
       "content[en]": formData.value.packContent.enn,
       image: formData.value.img,

@@ -72,7 +72,7 @@
             <span class="col">
               <TextArea
                 v-model="formData.serviceContent.enn"
-                :holder="'Service name en'"
+                :holder="'Service content en'"
                 :label="'Service Content (EN)'"
                 :appear="checkErrName(['enn']) ? 'err-border' : ''"
               ></TextArea>
@@ -93,8 +93,8 @@
             <span class="col">
               <TextArea
                 v-model="formData.serviceContent.arr"
-                :holder="'Service name ar'"
-                :label="'Service Name (AR)'"
+                :holder="'Service content ar'"
+                :label="'Service Content (AR)'"
                 :appear="checkErrName(['arr']) ? 'err-border' : ''"
               ></TextArea>
               <span
@@ -108,22 +108,21 @@
               >
             </span>
           </span>
-
           <span class="row w-50">
             <!-- Name -->
             <span class="col">
               <InptField
-                v-model="formData.imgDescription.arrr"
-                :holder="'Description (AR)'"
-                :label="'description ar'"
-                :appear="checkErrName(['arrr']) ? 'err-border' : ''"
+                v-model="formData.imgDescription.ennn"
+                :holder="'Description en'"
+                :label="'description (EN)'"
+                :appear="checkErrName(['ennn']) ? 'err-border' : ''"
               ></InptField>
               <span
                 class="center-row justify-content-start"
                 style="margin-top: -1rem; margin-bottom: 1rem"
                 v-for="(err, i) in validationObj.$errors"
                 :key="i"
-                ><span v-if="err.$property == 'arrr'" class="err-msg">
+                ><span v-if="err.$property == 'ennn'" class="err-msg">
                   {{ err.$message }}
                 </span></span
               >
@@ -133,17 +132,17 @@
             <!-- Name -->
             <span class="col">
               <InptField
-                v-model="formData.imgDescription.ennn"
-                :holder="'Description (EN)'"
-                :label="'description en'"
-                :appear="checkErrName(['ennn']) ? 'err-border' : ''"
+                v-model="formData.imgDescription.arrr"
+                :holder="'Description ar'"
+                :label="'description (AR)'"
+                :appear="checkErrName(['arrr']) ? 'err-border' : ''"
               ></InptField>
               <span
                 class="center-row justify-content-start"
                 style="margin-top: -1rem; margin-bottom: 1rem"
                 v-for="(err, i) in validationObj.$errors"
                 :key="i"
-                ><span v-if="err.$property == 'ennn'" class="err-msg">
+                ><span v-if="err.$property == 'arrr'" class="err-msg">
                   {{ err.$message }}
                 </span></span
               >
