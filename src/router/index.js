@@ -222,6 +222,44 @@ const router = createRouter({
     },
 
     {
+      path: "/blogs",
+      name: "blog-categories",
+      component: () => import("@/components/local/blogs/Categories.vue"),
+      meta: {
+        title: "Blog Categories",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/category/:id",
+      name: "categoryInfo",
+      component: () => import("@/components/local/blogs/CategoriesInfo.vue"),
+      meta: {
+        title: "Category Details",
+        requiresAuth: true,
+      },
+    },
+
+    {
+      path: "/Posts",
+      name: "blog-posts",
+      component: () => import("@/components/local/posts/Post.vue"),
+      meta: {
+        title: "Posts",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/post/:id",
+      name: "postInfo",
+      component: () => import("@/components/local/posts/PostInfo.vue"),
+      meta: {
+        title: "Post Details",
+        requiresAuth: true,
+      },
+    },
+
+    {
       path: "/our-value",
       name: "ourValue",
       component: () => import("@/components/local/our_values/OurValue.vue"),

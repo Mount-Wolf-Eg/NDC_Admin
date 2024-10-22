@@ -363,6 +363,16 @@
             <div class="spinner-grow me-3" role="status"></div>
             <span> Loading...</span>
           </button>
+          <button
+            @click="closeModal()"
+            type="button"
+            class="ms-auto modal-add-btn"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            id="close-modal"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>
