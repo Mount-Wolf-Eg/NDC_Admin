@@ -224,7 +224,7 @@ export const usePostStore = defineStore("postStore", {
         .then((res) => {
           result = res;
           mainStore().showAlert("Post updated suuccessfully", 1);
-          this.getAllCategPosts();
+          this.getAllPosts();
         })
         .catch((err) => {
           mainStore().showAlert(
