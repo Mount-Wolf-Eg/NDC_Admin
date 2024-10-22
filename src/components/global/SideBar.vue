@@ -4,7 +4,6 @@
       class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-5 text-white min-vh-100 p-5"
       style="justify-content: space-between !important"
     >
-      <!-- brand logo -->
       <li
         to="/"
         class="d-flex align-items-center pb-3 me-md-auto text-white text-decoration-none w-100"
@@ -1005,16 +1004,6 @@
                 </span>
               </a>
             </li>
-
-            <li>
-              <a href="#" class="nav-link px-0">
-                <span class="mx-2 icon d-inline nav-item-btn-sub">item2</span>
-                <span
-                  class="mx-2 res d-none nav-item-btn-sub d-flex align-item-center justify-content-center my-3"
-                  >dddddddd</span
-                >
-              </a>
-            </li>
           </ul>
         </li>
 
@@ -1064,36 +1053,6 @@
           </span>
         </li>
 
-        <!-- dropdown list -->
-        <li>
-          <a
-            href="#submenu2"
-            data-bs-toggle="collapse"
-            class="nav-link px-0 align-middle"
-          >
-            <span class="icon d-inline nav-item-btn">dropdown</span>
-            <span class="res d-none nav-item-btn">dddddddd</span>
-          </a>
-          <ul
-            class="collapse nav flex-column mx-2"
-            id="submenu2"
-            data-bs-parent="#menu"
-          >
-            <li class="w-100">
-              <a href="#" class="nav-link px-0">
-                <span class="icon d-inline nav-item-btn-sub">Menu</span>
-                <span class="res d-none nav-item-btn-sub">dddddddd</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link px-0">
-                <span class="icon d-inline nav-item-btn-sub">Menu</span>
-                <span class="res d-none nav-item-btn-sub">dddddddd</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-        <!-- item -->
         <li
           @click="router.push({ name: 'settings' })"
           class="nav-link px-0 align-middle"
@@ -1219,9 +1178,7 @@
           </div>
         </li>
       </ul>
-      <!-- sidebar list end -->
 
-      <!-- logout button -->
       <button
         @click="useAuthStore().logOut()"
         class="icon d-inline mb-auto mx-auto nav-item-btn my-3"
@@ -1278,7 +1235,6 @@
           />
         </svg>
       </button>
-      <!-- logout button -->
 
       <!-- dropdown menu start-->
       <!-- <div class="dropdown pb-4 mx-auto my-5">
