@@ -2,7 +2,7 @@
   <form
     @submit.prevent="handleAction()"
     class="modal fade modal-xl"
-    id="addPartner"
+    id="addval"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
@@ -30,7 +30,7 @@
             <span class="col">
               <InptField
                 v-model="formData.name.en"
-                :holder="'name en '"
+                :holder="'name en'"
                 :label="'Name (EN)'"
                 :appear="checkErrName(['en']) ? 'err-border' : ''"
               ></InptField>
@@ -70,17 +70,17 @@
             <!-- Name -->
             <span class="col">
               <InptField
-                v-model="formData.imgDescription.enn"
+                v-model="formData.imgDescription.ennn"
                 :holder="'description en'"
-                :label="'Description (EN)'"
-                :appear="checkErrName(['enn']) ? 'err-border' : ''"
+                :label="'Image Description (EN)'"
+                :appear="checkErrName(['ennn']) ? 'err-border' : ''"
               ></InptField>
               <span
                 class="center-row justify-content-start"
                 style="margin-top: -1rem; margin-bottom: 1rem"
                 v-for="(err, i) in validationObj.$errors"
                 :key="i"
-                ><span v-if="err.$property == 'enn'" class="err-msg">
+                ><span v-if="err.$property == 'ennn'" class="err-msg">
                   {{ err.$message }}
                 </span></span
               >
@@ -90,23 +90,22 @@
             <!-- Name -->
             <span class="col">
               <InptField
-                v-model="formData.imgDescription.arr"
+                v-model="formData.imgDescription.arrr"
                 :holder="'description ar'"
-                :label="'Description (AR)'"
-                :appear="checkErrName(['arr']) ? 'err-border' : ''"
+                :label="'Image Description (AR)'"
+                :appear="checkErrName(['arrr']) ? 'err-border' : ''"
               ></InptField>
               <span
                 class="center-row justify-content-start"
                 style="margin-top: -1rem; margin-bottom: 1rem"
                 v-for="(err, i) in validationObj.$errors"
                 :key="i"
-                ><span v-if="err.$property == 'arr'" class="err-msg">
+                ><span v-if="err.$property == 'arrr'" class="err-msg">
                   {{ err.$message }}
                 </span></span
               >
             </span>
           </span>
-
           <span class="row w-100">
             <!-- role -->
             <span class="col">
@@ -153,21 +152,16 @@ import { sliderStore } from "@/stores/settings/slidersStore";
 
 // validation
 import useVuelidator from "@vuelidate/core";
-import {
-  required,
-  minLength,
-  maxLength,
-  alphaNum,
-} from "@vuelidate/validators";
+import { required, minLength, maxLength } from "@vuelidate/validators";
 required.$message = "Field is required";
 
 import { ref, watch, defineProps } from "vue";
 
-const emit = defineEmits(["resetPartner"]);
+const emit = defineEmits(["resetOurValue"]);
 const isLoading = ref(false);
 
 const props = defineProps({
-  partner: {
+  val: {
     type: Object,
     required: false,
     default: () => ({}),
@@ -179,26 +173,27 @@ const formData = ref({
     ar: "",
     en: "",
   },
-  img: "",
+
   imgDescription: {
-    arr: "",
-    enn: "",
+    arrr: "",
+    ennn: "",
   },
+  img: "",
 });
 
 watch(
-  () => props.partner,
+  () => props.val,
   () => {
-    if (!props.partner.id) {
+    if (!props.val.id) {
       return;
     }
-    formData.value.name.ar = props.partner.title.ar;
-    formData.value.name.en = props.partner.title.en;
+    formData.value.name.ar = props.val.title.ar;
+    formData.value.name.en = props.val.title.en;
 
-    formData.value.img = props.partner.image;
+    formData.value.imgDescription.arrr = props.val.description.ar;
+    formData.value.imgDescription.ennn = props.val.description.en;
 
-    formData.value.imgDescription.arr = props.partner.description.ar;
-    formData.value.imgDescription.enn = props.partner.description.en;
+    formData.value.img = props.val.image;
   }
 );
 
@@ -207,14 +202,20 @@ const validationRules = ref({
     ar: { required, minLength: minLength(3), maxLength: maxLength(100) },
     en: { required, minLength: minLength(3), maxLength: maxLength(100) },
   },
+
   img: {
     required,
   },
+
   imgDescription: {
-    arr: {
+    arrr: {
+      required,
+      minLength: minLength(10),
       maxLength: maxLength(250),
     },
-    enn: {
+    ennn: {
+      required,
+      minLength: minLength(10),
       maxLength: maxLength(250),
     },
   },
@@ -228,7 +229,7 @@ const validationObj = useVuelidator(validationRules, formData);
 
 const closeModal = () => {
   resetFormData();
-  emit("resetPartner");
+  emit("resetOurValue");
   document.querySelector("#close-modal").click();
 };
 
@@ -239,30 +240,31 @@ const resetFormData = () => {
       ar: "",
       en: "",
     },
-    img: "",
+
     imgDescription: {
-      arr: "",
-      enn: "",
+      arrr: "",
+      ennn: "",
     },
+    img: "",
   };
   validationObj.value.$reset();
-  document.getElementById("addPartner").reset();
+  document.getElementById("addval").reset();
 };
 
-const addPartner = async () => {
+const addPack = async () => {
   isLoading.value = true;
   const result = await validationObj.value.$validate();
   if (result) {
     const res = await sliderStore().addslider(
       {
-        slider_type: "partners",
+        slider_type: "our_values",
         "title[ar]": formData.value.name.ar,
         "title[en]": formData.value.name.en,
+        "description[ar]": formData.value.imgDescription.arrr,
+        "description[en]": formData.value.imgDescription.ennn,
         image: formData.value.img,
-        "description[en]": formData.value.imgDescription.enn,
-        "description[ar]": formData.value.imgDescription.arr,
       },
-      "partners"
+      "our_values"
     );
     if (res) {
       closeModal();
@@ -271,21 +273,21 @@ const addPartner = async () => {
   isLoading.value = false;
 };
 
-const updatePartner = async () => {
+const updatePack = async () => {
   isLoading.value = true;
   const result = await validationObj.value.$validate();
   if (result) {
     const res = await sliderStore().updateSlider(
       {
-        slider_type: "partners",
+        slider_type: "our_values",
         "title[ar]": formData.value.name.ar,
         "title[en]": formData.value.name.en,
+        "description[ar]": formData.value.imgDescription.arrr,
+        "description[en]": formData.value.imgDescription.ennn,
         image: formData.value.img,
-        "description[en]": formData.value.imgDescription.enn,
-        "description[ar]": formData.value.imgDescription.arr,
-        id: props.partner.id,
+        id: props.val.id,
       },
-      "partners"
+      "our_values"
     );
     if (res) {
       closeModal();
@@ -295,10 +297,10 @@ const updatePartner = async () => {
 };
 
 const handleAction = () => {
-  if (props.partner.id) {
-    updatePartner();
+  if (props.val.id) {
+    updatePack();
   } else {
-    addPartner();
+    addPack();
   }
 };
 </script>

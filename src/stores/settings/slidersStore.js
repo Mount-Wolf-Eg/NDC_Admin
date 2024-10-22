@@ -19,6 +19,7 @@ export const sliderStore = defineStore("sliders", {
     suspendedSliders: [],
     slider: [],
     headerSlider: [],
+    ourValues: [],
     testimonialSlider: [],
     successMetrics: [],
     achievementsSliders: [],
@@ -49,6 +50,7 @@ export const sliderStore = defineStore("sliders", {
           );
         });
     },
+
     // all sliders by type
     async getAllSlidersTypes() {
       await axiosInstance
@@ -66,6 +68,7 @@ export const sliderStore = defineStore("sliders", {
           this.achievementsSliders = res.data.data.achievements;
           this.partnerSliders = res.data.data.partners;
           this.mainResources = res.data.data.main_resources;
+          this.ourValues = res.data.data.our_values;
         })
         .catch((err) => {
           mainStore().showAlert(
@@ -76,6 +79,7 @@ export const sliderStore = defineStore("sliders", {
           );
         });
     },
+
     // get slider by type
     async getSingleSliderType(type) {
       await axiosInstance

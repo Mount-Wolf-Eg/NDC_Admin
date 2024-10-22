@@ -15,7 +15,6 @@ export const aboutUsStore = defineStore("aboutUs", {
         {}
       )["Admin"],
     aboutUs: [],
-    ourValues: [],
     ourGoals: [],
     ourMission: [],
     ourVission: [],
@@ -50,52 +49,6 @@ export const aboutUsStore = defineStore("aboutUs", {
       let result;
       await axiosInstance
         .post(`${mainStore().apiLink}/admin/StaticPages/update`, data, {
-          headers: {
-            Authorization: `Bearer ${
-              this.checkToken ? JSON.parse(this.checkToken)["token"] : ""
-            }`,
-          },
-        })
-        .then((res) => {
-          result = res;
-        })
-        .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
-          result = false;
-        });
-      return result;
-    },
-
-    async getAboutValue() {
-      await axiosInstance
-        .get(`${mainStore().apiLink}/admin/slider/showSlidersTypes`, {
-          headers: {
-            Authorization: `Bearer ${
-              this.checkToken ? JSON.parse(this.checkToken)["token"] : ""
-            }`,
-          },
-        })
-        .then((res) => {
-          this.ourValues = res.data.data.our_values;
-        })
-        .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
-        });
-    },
-    async updateAboutValue() {
-      let result;
-      await axiosInstance
-        .post(`${mainStore().apiLink}/admin/slider/update`, data, {
           headers: {
             Authorization: `Bearer ${
               this.checkToken ? JSON.parse(this.checkToken)["token"] : ""

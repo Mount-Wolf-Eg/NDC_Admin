@@ -257,9 +257,9 @@ const addPartner = async () => {
     const res = await sliderStore().addslider(
       {
         slider_type: "success_metrics",
+        image: formData.value.img,
         "title[ar]": formData.value.name.ar,
         "title[en]": formData.value.name.en,
-        image: formData.value.img,
         "description[ar]": formData.value.imgDescription.arr,
         "description[en]": formData.value.imgDescription.enn,
       },

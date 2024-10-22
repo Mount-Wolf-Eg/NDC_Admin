@@ -822,6 +822,52 @@
           </ul>
         </li>
 
+        <li
+          class="nav-link align-middle px-0"
+          @click="router.push({ name: 'ourValue' })"
+        >
+          <span
+            class="icon d-inline nav-item-btn d-flex align-item-center justify-content-center justify-content-sm-start gap-2"
+          >
+            <svg
+              style="
+                width: 1.6rem;
+                height: 1.6rem;
+                min-width: 9px;
+                min-height: 9px;
+              "
+              fill="#464a61"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M168.5 72L256 165l87.5-93-175 0zM383.9 99.1L311.5 176l129 0L383.9 99.1zm50 124.9L256 224 78.1 224 256 420.3 433.9 224zM71.5 176l129 0L128.1 99.1 71.5 176zm434.3 40.1l-232 256c-4.5 5-11 7.9-17.8 7.9s-13.2-2.9-17.8-7.9l-232-256c-7.7-8.5-8.3-21.2-1.5-30.4l112-152c4.5-6.1 11.7-9.8 19.3-9.8l240 0c7.6 0 14.8 3.6 19.3 9.8l112 152c6.8 9.2 6.1 21.9-1.5 30.4z"
+              />
+            </svg>
+
+            Our Value
+          </span>
+          <span
+            class="res d-none nav-item-btn d-flex align-item-center justify-content-center my-3"
+          >
+            <svg
+              style="
+                width: 3.6rem;
+                height: 3.6rem;
+                min-width: 9px;
+                min-height: 9px;
+              "
+              fill="#464a61"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M168.5 72L256 165l87.5-93-175 0zM383.9 99.1L311.5 176l129 0L383.9 99.1zm50 124.9L256 224 78.1 224 256 420.3 433.9 224zM71.5 176l129 0L128.1 99.1 71.5 176zm434.3 40.1l-232 256c-4.5 5-11 7.9-17.8 7.9s-13.2-2.9-17.8-7.9l-232-256c-7.7-8.5-8.3-21.2-1.5-30.4l112-152c4.5-6.1 11.7-9.8 19.3-9.8l240 0c7.6 0 14.8 3.6 19.3 9.8l112 152c6.8 9.2 6.1 21.9-1.5 30.4z"
+              />
+            </svg>
+          </span>
+        </li>
+
         <!-- dropdown list -->
         <li>
           <a

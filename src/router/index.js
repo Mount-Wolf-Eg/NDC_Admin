@@ -222,6 +222,26 @@ const router = createRouter({
     },
 
     {
+      path: "/our-value",
+      name: "ourValue",
+      component: () => import("@/components/local/our_values/OurValue.vue"),
+      meta: {
+        title: "Our Value",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/our-value/value/:id",
+      name: "our-value-info",
+      component: () =>
+        import("@/components/local/our_values/OurValuesInfo.vue"),
+      meta: {
+        title: "Value Details",
+        requiresAuth: true,
+      },
+    },
+
+    {
       path: "/contact-us",
       name: "ContactUs",
       component: () => import("@/components/local/contact_us/ContactUs.vue"),
