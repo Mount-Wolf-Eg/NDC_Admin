@@ -14,7 +14,7 @@
         type="file"
         name="upload file"
         :id="`img-field-${props.for}`"
-        accept=".png, .jpeg, .jpg"
+        accept=".png, .jpeg, .jpg, .svg"
         @change="uploadFile"
         :disabled="disable"
       />

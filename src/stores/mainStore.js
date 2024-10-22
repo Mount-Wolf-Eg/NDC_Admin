@@ -3,6 +3,8 @@ import { useToast } from "vue-toastification";
 
 // main url
 const mainDomain = "https://ndc.mountwolfs.com/api";
+// production
+// const mainDomain = "https://dashboard.ndc-sa.com/api";
 
 export const mainStore = defineStore("mainStore", {
   state: () => ({
