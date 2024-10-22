@@ -77,10 +77,7 @@
           <span>
             <p class="user-name" for="slideEn">Included Services</p>
             <ul class="card-list" style="color: var(--col-text)">
-              <li
-                v-for="(ser, j) in replaceData(packag.included_services?.en)"
-                :key="j"
-              >
+              <li v-for="(ser, j) in packag.included_services?.en" :key="j">
                 {{ ser }}
               </li>
             </ul>
@@ -88,10 +85,7 @@
           <span>
             <p class="user-name" for="slideEn">الخدمات المشمولة:</p>
             <ul class="card-list" style="color: var(--col-text)">
-              <li
-                v-for="(ser, j) in replaceData(packag.included_services?.ar)"
-                :key="j"
-              >
+              <li v-for="(ser, j) in packag.included_services?.ar" :key="j">
                 {{ ser }}
               </li>
             </ul>
@@ -101,10 +95,7 @@
           <span>
             <p class="user-name" for="slideEn">Target Group</p>
             <ul class="card-list" style="color: var(--col-text)">
-              <li
-                v-for="(ser, j) in replaceData(packag.target_group?.ar)"
-                :key="j"
-              >
+              <li v-for="(ser, j) in packag.target_group?.ar" :key="j">
                 {{ ser }}
               </li>
             </ul>
@@ -112,10 +103,7 @@
           <span>
             <p class="user-name" for="slideEn">الفئة المستهدفة :</p>
             <ul class="card-list" style="color: var(--col-text)">
-              <li
-                v-for="(ser, j) in replaceData(packag.target_group?.en)"
-                :key="j"
-              >
+              <li v-for="(ser, j) in packag.target_group?.en" :key="j">
                 {{ ser }}
               </li>
             </ul>
@@ -222,11 +210,11 @@ onBeforeMount(async () => {
   if (!res) router.push({ name: "packagePage" });
 });
 
-const replaceData = (ser) => {
-  if (ser) {
-    return JSON.parse(ser.replace(/'/g, '"'));
-  }
-};
+// const replaceData = (ser) => {
+//   if (ser) {
+//     return JSON.parse(ser.replace(/'/g, '"'));
+//   }
+// };
 </script>
 
 <style lang="scss" scoped></style>

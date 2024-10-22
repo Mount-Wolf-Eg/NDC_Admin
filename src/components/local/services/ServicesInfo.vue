@@ -127,13 +127,13 @@ const router = useRouter();
 const timeDate = ref();
 
 onBeforeMount(async () => {
-  if (!route.params.id) router.push({ name: "servicePage" });
+  if (!route.params.id) router.push({ name: "services" });
   let res = await useServiceStore().getService({ id: route.params.id });
   if (res)
     timeDate.value = moment(new Date(service.value.created_at)).format(
       "DD-MM-YYYY"
     );
-  if (!res) router.push({ name: "servicePage" });
+  if (!res) router.push({ name: "services" });
 });
 </script>
 

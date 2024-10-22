@@ -17,7 +17,7 @@
           <InptField
             v-model="formData.aboutUs.aTitleEn"
             :holder="'title'"
-            :label="'About us Title (AR)'"
+            :label="'About us Title (EN)'"
             :appear="checkErrName(['aTitleEn']) ? 'err-border' : ''"
           ></InptField>
           <span
@@ -53,7 +53,7 @@
           <InptField
             v-model="formData.aboutUs.acontEn"
             :holder="'content'"
-            :label="'About us Content (AR)'"
+            :label="'About us Content (EN)'"
             :appear="checkErrName(['acontEn']) ? 'err-border' : ''"
           ></InptField>
           <span
@@ -161,7 +161,7 @@
           <InptField
             v-model="formData.ourVission.vTitleEn"
             :holder="'title'"
-            :label="'Our Vission Title (AR)'"
+            :label="'Our Vission Title (EN)'"
             :appear="checkErrName(['vTitleEn']) ? 'err-border' : ''"
           ></InptField>
           <span
@@ -197,7 +197,7 @@
           <InptField
             v-model="formData.ourVission.vcontEn"
             :holder="'content'"
-            :label="'Our Vission Content (AR)'"
+            :label="'Our Vission Content (EN)'"
             :appear="checkErrName(['vcontEn']) ? 'err-border' : ''"
           ></InptField>
           <span
@@ -228,30 +228,6 @@
               {{ err.$message }}
             </span></span
           >
-        </span>
-        <span class="row w-100">
-          <span class="col">
-            <UploadeFile
-              :for="'vimg'"
-              @fileData="formData.ourVission.vimg = $event"
-            ></UploadeFile>
-            <img
-              v-if="formData.ourVission.vimg"
-              class="mt-3"
-              :src="formData.ourVission.vimg"
-              alt=""
-              style="max-width: 10rem; border-radius: 7px"
-            />
-            <span
-              class="center-row justify-content-start"
-              style="margin-top: -1rem; margin-bottom: 1rem"
-              v-for="(err, i) in validationObj.$errors"
-              :key="i"
-              ><span v-if="err.$property == 'vimg'" class="err-msg">
-                {{ err.$message }}
-              </span></span
-            >
-          </span>
         </span>
 
         <span class="w-50">
@@ -288,6 +264,30 @@
             </span></span
           >
         </span>
+        <span class="row w-100">
+          <span class="col">
+            <UploadeFile
+              :for="'vimg'"
+              @fileData="formData.ourVission.vimg = $event"
+            ></UploadeFile>
+            <img
+              v-if="formData.ourVission.vimg"
+              class="mt-3"
+              :src="formData.ourVission.vimg"
+              alt=""
+              style="max-width: 10rem; border-radius: 7px"
+            />
+            <span
+              class="center-row justify-content-start"
+              style="margin-top: -1rem; margin-bottom: 1rem"
+              v-for="(err, i) in validationObj.$errors"
+              :key="i"
+              ><span v-if="err.$property == 'vimg'" class="err-msg">
+                {{ err.$message }}
+              </span></span
+            >
+          </span>
+        </span>
       </span>
       <!-- three -->
       <span
@@ -305,7 +305,7 @@
           <InptField
             v-model="formData.ourMission.mTitleEn"
             :holder="'title'"
-            :label="'Our Mission Title (AR)'"
+            :label="'Our Mission Title (EN)'"
             :appear="checkErrName(['mTitleEn']) ? 'err-border' : ''"
           ></InptField>
           <span
@@ -341,7 +341,7 @@
           <InptField
             v-model="formData.ourMission.mcontEn"
             :holder="'content'"
-            :label="'Our Mission Content (AR)'"
+            :label="'Our Mission Content (EN)'"
             :appear="checkErrName(['mcontEn']) ? 'err-border' : ''"
           ></InptField>
           <span
@@ -372,30 +372,6 @@
               {{ err.$message }}
             </span></span
           >
-        </span>
-        <span class="row w-100">
-          <span class="col">
-            <UploadeFile
-              :for="'mimg'"
-              @fileData="formData.ourMission.mimg = $event"
-            ></UploadeFile>
-            <img
-              v-if="formData.ourMission.mimg"
-              class="mt-3"
-              :src="formData.ourMission.mimg"
-              alt=""
-              style="max-width: 10rem; border-radius: 7px"
-            />
-            <span
-              class="center-row justify-content-start"
-              style="margin-top: -1rem; margin-bottom: 1rem"
-              v-for="(err, i) in validationObj.$errors"
-              :key="i"
-              ><span v-if="err.$property == 'mimg'" class="err-msg">
-                {{ err.$message }}
-              </span></span
-            >
-          </span>
         </span>
 
         <span class="w-50">
@@ -432,6 +408,30 @@
             </span></span
           >
         </span>
+        <span class="row w-100">
+          <span class="col">
+            <UploadeFile
+              :for="'mimg'"
+              @fileData="formData.ourMission.mimg = $event"
+            ></UploadeFile>
+            <img
+              v-if="formData.ourMission.mimg"
+              class="mt-3"
+              :src="formData.ourMission.mimg"
+              alt=""
+              style="max-width: 10rem; border-radius: 7px"
+            />
+            <span
+              class="center-row justify-content-start"
+              style="margin-top: -1rem; margin-bottom: 1rem"
+              v-for="(err, i) in validationObj.$errors"
+              :key="i"
+              ><span v-if="err.$property == 'mimg'" class="err-msg">
+                {{ err.$message }}
+              </span></span
+            >
+          </span>
+        </span>
       </span>
       <!-- four -->
       <span
@@ -449,7 +449,7 @@
           <InptField
             v-model="formData.ourGoals.gTitleEn"
             :holder="'title'"
-            :label="'Our Goals Title (AR)'"
+            :label="'Our Goals Title (EN)'"
             :appear="checkErrName(['gTitleEn']) ? 'err-border' : ''"
           ></InptField>
           <span
@@ -485,7 +485,7 @@
           <InptField
             v-model="formData.ourGoals.gcontEn"
             :holder="'content'"
-            :label="'Our Goals Content (AR)'"
+            :label="'Our Goals Content (EN)'"
             :appear="checkErrName(['gcontEn']) ? 'err-border' : ''"
           ></InptField>
           <span
@@ -516,30 +516,6 @@
               {{ err.$message }}
             </span></span
           >
-        </span>
-        <span class="row w-100">
-          <span class="col">
-            <UploadeFile
-              :for="'gimg'"
-              @fileData="formData.ourGoals.gimg = $event"
-            ></UploadeFile>
-            <img
-              v-if="formData.ourGoals.gimg"
-              class="mt-3"
-              :src="formData.ourGoals.gimg"
-              alt=""
-              style="max-width: 10rem; border-radius: 7px"
-            />
-            <span
-              class="center-row justify-content-start"
-              style="margin-top: -1rem; margin-bottom: 1rem"
-              v-for="(err, i) in validationObj.$errors"
-              :key="i"
-              ><span v-if="err.$property == 'gimg'" class="err-msg">
-                {{ err.$message }}
-              </span></span
-            >
-          </span>
         </span>
 
         <span class="w-50">
@@ -575,6 +551,30 @@
               {{ err.$message }}
             </span></span
           >
+        </span>
+        <span class="row w-100">
+          <span class="col">
+            <UploadeFile
+              :for="'gimg'"
+              @fileData="formData.ourGoals.gimg = $event"
+            ></UploadeFile>
+            <img
+              v-if="formData.ourGoals.gimg"
+              class="mt-3"
+              :src="formData.ourGoals.gimg"
+              alt=""
+              style="max-width: 10rem; border-radius: 7px"
+            />
+            <span
+              class="center-row justify-content-start"
+              style="margin-top: -1rem; margin-bottom: 1rem"
+              v-for="(err, i) in validationObj.$errors"
+              :key="i"
+              ><span v-if="err.$property == 'gimg'" class="err-msg">
+                {{ err.$message }}
+              </span></span
+            >
+          </span>
         </span>
       </span>
 
@@ -623,7 +623,6 @@ const secondL = ref("");
 
 onMounted(async () => {
   await aboutUsStore().getAllAboutUs();
-  await aboutUsStore().getAboutValue();
 });
 
 const formData = ref({
@@ -716,7 +715,7 @@ const handleSetting = async () => {
   const result = await validationObj.value.$validate();
   if (result) {
     isLoading.value = true;
-    Promise.all([
+    const res = Promise.all([
       await aboutUsStore().updateAllAbout({
         id: 1,
         "title[ar]": formData.value.aboutUs.aTitleAr,

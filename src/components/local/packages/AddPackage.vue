@@ -106,6 +106,190 @@
               >
             </span>
           </span>
+          <span class="row w-50">
+            <!-- Name -->
+            <span class="col">
+              <span
+                class="d-flex flex-row align-items-end justify-content-center gap-2"
+              >
+                <InptField
+                  style="flex: 1"
+                  v-model="target"
+                  :holder="'Target Group'"
+                  :label="'Target Group (EN)'"
+                  :appear="checkErrName(['ten']) ? 'err-border' : ''"
+                ></InptField>
+                <button
+                  class="addBtn"
+                  type="button"
+                  @click="addItem('targetGroupen')"
+                  :disabled="!target"
+                >
+                  Add
+                </button>
+              </span>
+              <span
+                class="center-row justify-content-start"
+                style="margin-top: -1rem; margin-bottom: 1rem"
+                v-for="(err, i) in validationObj.$errors"
+                :key="i"
+                ><span v-if="err.$property == 'ten'" class="err-msg">
+                  {{ err.$message }}
+                </span></span
+              >
+            </span>
+            <ul
+              class="target-list"
+              style="color: var(--col-text); list-style: none"
+            >
+              <li v-for="(ser, j) in formData.targetGroup.ten" :key="j">
+                {{ ser }}
+                <button type="button" @click="deleteItem(ser, 'targetGroupen')">
+                  -
+                </button>
+              </li>
+            </ul>
+          </span>
+
+          <span class="row w-50">
+            <!-- Name -->
+            <span class="col">
+              <span
+                class="d-flex flex-row align-items-end justify-content-center gap-2"
+              >
+                <InptField
+                  style="flex: 1"
+                  v-model="targetar"
+                  :holder="'Target Group'"
+                  :label="'Target Group (AR)'"
+                  :appear="checkErrName(['tar']) ? 'err-border' : ''"
+                ></InptField>
+                <button
+                  class="addBtn"
+                  type="button"
+                  @click="addItem('targetGroupar')"
+                  :disabled="!targetar"
+                >
+                  Add
+                </button>
+              </span>
+              <span
+                class="center-row justify-content-start"
+                style="margin-top: -1rem; margin-bottom: 1rem"
+                v-for="(err, i) in validationObj.$errors"
+                :key="i"
+                ><span v-if="err.$property == 'tar'" class="err-msg">
+                  {{ err.$message }}
+                </span></span
+              >
+            </span>
+            <ul
+              class="target-list"
+              style="color: var(--col-text); list-style: none"
+            >
+              <li v-for="(ser, j) in formData.targetGroup.tar" :key="j">
+                {{ ser }}
+                <button type="button" @click="deleteItem(ser, 'targetGroupar')">
+                  -
+                </button>
+              </li>
+            </ul>
+          </span>
+
+          <span class="row w-50">
+            <!-- Name -->
+            <span class="col">
+              <span
+                class="d-flex flex-row align-items-end justify-content-center gap-2"
+              >
+                <InptField
+                  style="flex: 1"
+                  v-model="included"
+                  :holder="'included services'"
+                  :label="'Included Services (EN)'"
+                  :appear="checkErrName(['ien']) ? 'err-border' : ''"
+                ></InptField>
+                <button
+                  class="addBtn"
+                  type="button"
+                  :disabled="!included"
+                  @click="addItem('includedServicesen')"
+                >
+                  Add
+                </button>
+              </span>
+              <span
+                class="center-row justify-content-start"
+                style="margin-top: -1rem; margin-bottom: 1rem"
+                v-for="(err, i) in validationObj.$errors"
+                :key="i"
+                ><span v-if="err.$property == 'ien'" class="err-msg">
+                  {{ err.$message }}
+                </span></span
+              >
+            </span>
+            <ul
+              class="target-list"
+              style="color: var(--col-text); list-style: none"
+            >
+              <li v-for="(ser, j) in formData.includedServices.ien" :key="j">
+                {{ ser }}
+                <button
+                  type="button"
+                  @click="deleteItem(ser, 'includedServicesen')"
+                >
+                  -
+                </button>
+              </li>
+            </ul>
+          </span>
+          <span class="row w-50">
+            <!-- Name -->
+            <span class="col">
+              <span
+                class="d-flex flex-row align-items-end justify-content-center gap-2"
+              >
+                <InptField
+                  style="flex: 1"
+                  v-model="includedar"
+                  :holder="'included services'"
+                  :label="'Included Services (AR)'"
+                  :appear="checkErrName(['iar']) ? 'err-border' : ''"
+                ></InptField>
+                <button
+                  class="addBtn"
+                  type="button"
+                  :disabled="!includedar"
+                  @click="addItem('includedServicesar')"
+                >
+                  Add
+                </button>
+              </span>
+              <span
+                class="center-row justify-content-start"
+                style="margin-top: -1rem; margin-bottom: 1rem"
+                v-for="(err, i) in validationObj.$errors"
+                :key="i"
+                ><span v-if="err.$property == 'iar'" class="err-msg">
+                  {{ err.$message }}
+                </span></span
+              >
+            </span>
+            <ul
+              class="target-list"
+              style="color: var(--col-text); list-style: none"
+            >
+              <li v-for="(ser, j) in formData.includedServices.iar" :key="j">
+                {{ ser }}
+                <button
+                  type="button"
+                  @click="deleteItem(ser, 'includedServicesar')"
+                >
+                  -
+                </button>
+              </li>
+            </ul>
+          </span>
 
           <span class="row w-50">
             <!-- Name -->
@@ -202,13 +386,16 @@ const emit = defineEmits(["resetMainService"]);
 const isLoading = ref(false);
 
 const props = defineProps({
-  service: {
+  package: {
     type: Object,
     required: false,
     default: () => ({}),
   },
 });
-
+const target = ref("");
+const targetar = ref("");
+const included = ref("");
+const includedar = ref("");
 const formData = ref({
   name: {
     ar: "",
@@ -223,24 +410,38 @@ const formData = ref({
     ennn: "",
   },
   img: "",
+  targetGroup: {
+    tar: [],
+    ten: [],
+  },
+  includedServices: {
+    iar: [],
+    ien: [],
+  },
 });
 
 watch(
-  () => props.service,
+  () => props.package,
   () => {
-    if (!props.service.id) {
+    if (!props.package.id) {
       return;
     }
-    formData.value.name.ar = props.service.name.ar;
-    formData.value.name.en = props.service.name.en;
+    formData.value.name.ar = props.package.name.ar;
+    formData.value.name.en = props.package.name.en;
 
-    formData.value.packContent.arr = props.service.content.ar;
-    formData.value.packContent.enn = props.service.content.en;
+    formData.value.packContent.arr = props.package.content.ar;
+    formData.value.packContent.enn = props.package.content.en;
 
-    formData.value.imgDescription.arrr = props.service.description.ar;
-    formData.value.imgDescription.ennn = props.service.description.en;
+    formData.value.imgDescription.arrr = props.package.description.ar;
+    formData.value.imgDescription.ennn = props.package.description.en;
 
-    formData.value.img = props.service.image;
+    formData.value.targetGroup.tar = props.package.target_group.ar;
+    formData.value.targetGroup.ten = props.package.target_group.en;
+
+    formData.value.includedServices.iar = props.package.included_services.ar;
+    formData.value.includedServices.ien = props.package.included_services.en;
+
+    formData.value.img = props.package.image;
   }
 );
 
@@ -279,6 +480,14 @@ const validationRules = ref({
       maxLength: maxLength(250),
     },
   },
+  targetGroup: {
+    tar: { required },
+    ten: { required },
+  },
+  includedServices: {
+    iar: { required },
+    ien: { required },
+  },
 });
 
 const checkErrName = (key) => {
@@ -308,6 +517,14 @@ const resetFormData = () => {
       arrr: "",
       ennn: "",
     },
+    targetGroup: {
+      tar: [],
+      ten: [],
+    },
+    includedServices: {
+      iar: [],
+      ien: [],
+    },
     img: "",
   };
   validationObj.value.$reset();
@@ -325,6 +542,10 @@ const addPack = async () => {
       "content[en]": formData.value.packContent.enn,
       "description[ar]": formData.value.imgDescription.arrr,
       "description[en]": formData.value.imgDescription.ennn,
+      "included_services[en]": formData.value.includedServices.ien,
+      "included_services[ar]": formData.value.includedServices.iar,
+      "target_group[en]": formData.value.targetGroup.ten,
+      "target_group[ar]": formData.value.targetGroup.tar,
       image: formData.value.img,
     });
     if (res) {
@@ -345,6 +566,10 @@ const updatePack = async () => {
       "description[en]": formData.value.imgDescription.ennn,
       "content[ar]": formData.value.packContent.arr,
       "content[en]": formData.value.packContent.enn,
+      "included_services[en]": formData.value.includedServices.ien,
+      "included_services[ar]": formData.value.includedServices.iar,
+      "target_group[en]": formData.value.targetGroup.ten,
+      "target_group[en]": formData.value.targetGroup.tar,
       image: formData.value.img,
       id: props.package.id,
     });
@@ -360,6 +585,40 @@ const handleAction = () => {
     updatePack();
   } else {
     addPack();
+  }
+};
+
+const addItem = (comp) => {
+  if (comp == "targetGroupen") {
+    formData.value.targetGroup.ten.push(target.value);
+    target.value = "";
+  } else if (comp == "targetGroupar") {
+    formData.value.targetGroup.tar.push(targetar.value);
+    targetar.value = "";
+  } else if (comp == "includedServicesen") {
+    formData.value.includedServices.ien.push(included.value);
+    included.value = "";
+  } else if (comp == "includedServicesar") {
+    formData.value.includedServices.iar.push(includedar.value);
+    includedar.value = "";
+  }
+};
+
+const deleteItem = (ser, comp) => {
+  if (comp == "targetGroupen") {
+    formData.value.targetGroup.ten = formData.value.targetGroup.ten.filter(
+      (e) => e != ser
+    );
+  } else if (comp == "targetGroupar") {
+    formData.value.targetGroup.tar = formData.value.targetGroup.tar.filter(
+      (e) => e != ser
+    );
+  } else if (comp == "includedServicesen") {
+    formData.value.includedServices.ien =
+      formData.value.includedServices.ien.filter((e) => e != ser);
+  } else if (comp == "includedServicesar") {
+    formData.value.includedServices.iar =
+      formData.value.includedServices.iar.filter((e) => e != ser);
   }
 };
 </script>

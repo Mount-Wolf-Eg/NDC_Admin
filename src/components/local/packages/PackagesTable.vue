@@ -5,6 +5,8 @@
         '',
         'Package Image',
         'Package name',
+        'included_services',
+        'target_group',
         'Created',
         'Status',
         'Action',
@@ -40,6 +42,28 @@
 
           <td>
             {{ pack.name }}
+          </td>
+
+          <td>
+            <ul
+              class="card-list"
+              style="color: var(--col-text); list-style: none"
+            >
+              <li v-for="(ser, j) in pack.included_services" :key="j">
+                {{ ser }}
+              </li>
+            </ul>
+          </td>
+
+          <td>
+            <ul
+              class="card-list"
+              style="color: var(--col-text); list-style: none"
+            >
+              <li v-for="(ser, j) in pack.target_group" :key="j">
+                {{ ser }}
+              </li>
+            </ul>
           </td>
 
           <td>
@@ -84,7 +108,6 @@
                 </svg>
               </button>
               <button
-                disabled
                 type="button"
                 class="btn border-0"
                 @click="editPackage(pack.id)"
@@ -173,7 +196,7 @@ const removePackage = async (id) => {
 };
 
 const editPackage = async (pack) => {
-  let res = await usePackageStore().updatePackage({ id: pack });
+  let res = await usePackageStore().getPackage({ id: pack });
   if (res) {
     emit("editPackage", packag.value);
   }

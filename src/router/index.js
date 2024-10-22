@@ -185,7 +185,7 @@ const router = createRouter({
 
     {
       path: "/Service",
-      name: "servicePage",
+      name: "services",
       component: () => import("@/components/local/services/Services.vue"),
       meta: {
         title: "Services",
@@ -307,13 +307,32 @@ const router = createRouter({
         requiresAuth: true,
       },
     },
-
     {
       path: "/about_us",
       name: "aboutUs",
       component: () => import("@/components/local/about_us/AboutUs.vue"),
       meta: {
         title: "About Us",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/terms-conditions",
+      name: "terms-conditions",
+      component: () =>
+        import("@/components/local/about_us/TermsAndConditions.vue"),
+      meta: {
+        title: "Terms & Conditions",
+        requiresAuth: true,
+      },
+    },
+    {
+      path: "/privacy-policy",
+      name: "privacyPolicy",
+      component: () =>
+        import("@/components/local/about_us/PrivacyAndPolicy.vue"),
+      meta: {
+        title: "Privacy & Policy",
         requiresAuth: true,
       },
     },
