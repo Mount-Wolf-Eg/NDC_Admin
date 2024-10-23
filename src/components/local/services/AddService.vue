@@ -257,12 +257,10 @@ const validationRules = ref({
     arr: {
       required,
       minLength: minLength(10),
-      maxLength: maxLength(100),
     },
     enn: {
       required,
       minLength: minLength(10),
-      maxLength: maxLength(100),
     },
   },
 
@@ -342,8 +340,8 @@ const updateService = async () => {
   const result = await validationObj.value.$validate();
   if (result) {
     const res = await useServiceStore().updateService({
-      "name[ar]": formData.value.name.ar,
-      "name[en]": formData.value.name.en,
+      "name[ar]": formData.value.serviceName.ar,
+      "name[en]": formData.value.serviceName.en,
       "description[ar]": formData.value.imgDescription.arrr,
       "description[en]": formData.value.imgDescription.ennn,
       "content[ar]": formData.value.serviceContent.arr,

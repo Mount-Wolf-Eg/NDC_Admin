@@ -51,7 +51,7 @@
               <InptField
                 v-model="formData.name.ar"
                 :holder="'name ar'"
-                :label="'Name (EN)'"
+                :label="'Name (AR)'"
                 :appear="checkErrName(['ar']) ? 'err-border' : ''"
               ></InptField>
               <span

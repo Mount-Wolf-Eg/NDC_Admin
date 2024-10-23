@@ -17,7 +17,7 @@
           <InptField
             v-model="formData.termsAndConditions.aTitleEn"
             :holder="'title'"
-            :label="'Terms&Conditions (EN)'"
+            :label="'Terms&Conditions Title (EN)'"
             :appear="checkErrName(['aTitleEn']) ? 'err-border' : ''"
           ></InptField>
           <span
@@ -53,7 +53,7 @@
           <InptField
             v-model="formData.termsAndConditions.acontEn"
             :holder="'content'"
-            :label="'Terms&Conditions (En)'"
+            :label="'Terms&Conditions Content (En)'"
             :appear="checkErrName(['acontEn']) ? 'err-border' : ''"
           ></InptField>
           <span
