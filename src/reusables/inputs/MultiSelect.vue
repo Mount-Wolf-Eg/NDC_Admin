@@ -44,12 +44,12 @@ const formData = ref("");
   .multiselect {
     margin: 0 !important;
     padding: 1.5rem 1rem !important;
-    border-radius: var(--border-r-lg) !important;
+    border-radius: var(--brd-radius) !important;
     width: 100% !important;
-    border: 1px solid var(--col-primary);
+    border: 1px solid var(--col-text);
   }
   .multiselect-dropdown {
-    border-radius: var(--border-r-lg) !important;
+    border-radius: var(--brd-radius) !important;
   }
 }
 </style>
