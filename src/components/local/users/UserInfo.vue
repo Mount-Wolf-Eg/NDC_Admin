@@ -38,7 +38,8 @@
             type="text"
             style="
               border: 1px solid var(--col-text);
-              border-radius: 12px;
+              border-radius: var(--brd-radius);
+
               padding: 1rem;
               margin: 1rem;
               font-weight: bold;

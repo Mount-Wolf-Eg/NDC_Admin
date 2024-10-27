@@ -5,7 +5,8 @@
         class="row center-row align-items-center p-4 my-5"
         style="
           border: 1px solid var(--col-gray);
-          border-radius: 12px;
+          border-radius: var(--brd-radius);
+
           box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
           background-color: var(--col-bg);
         "
@@ -52,7 +53,8 @@
         class="row center-row align-items-center p-4 my-5"
         style="
           border: 1px solid var(--col-gray);
-          border-radius: 12px;
+          border-radius: var(--brd-radius);
+
           box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
           background-color: var(--col-bg);
         "
@@ -107,7 +109,8 @@
         class="row center-row align-items-center p-4 my-5"
         style="
           border: 1px solid var(--col-gray);
-          border-radius: 12px;
+          border-radius: var(--brd-radius);
+
           box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
           background-color: var(--col-bg);
         "

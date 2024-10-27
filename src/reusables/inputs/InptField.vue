@@ -63,7 +63,8 @@ const updateValue = (value) => {
   input {
     padding: 2rem 2rem;
     width: 100%;
-    border-radius: 12px;
+    border-radius: var(--brd-radius);
+
     border: 1px solid #464a61;
   }
 }

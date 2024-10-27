@@ -8,7 +8,10 @@
           <div class="content-title">
             {{ route.name || "Admin Dashboard" }}
           </div>
-          <div class="p-5 m-4 content-body" style="border-radius: 1.2rem">
+          <div
+            class="p-5 m-4 content-body"
+            style="border-radius: var(--brd-radius)"
+          >
             <slot></slot>
           </div>
         </main>
@@ -19,7 +22,10 @@
     <div class="main-layout" v-else>
       <div class="layout-body row" style="flex: 1">
         <main class="content col">
-          <div class="p-5 m-4 content-body" style="border-radius: 1.2rem">
+          <div
+            class="p-5 m-4 content-body"
+            style="border-radius: var(--brd-radius)"
+          >
             <slot></slot>
           </div>
         </main>

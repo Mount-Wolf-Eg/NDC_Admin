@@ -30,6 +30,7 @@ export const useAuthStore = defineStore("authStore", {
         }
       } else {
         state.removeData();
+        this.logOut();
       }
     },
   },
@@ -64,14 +65,13 @@ export const useAuthStore = defineStore("authStore", {
           this.setUserStorage(this.authUser);
 
           if (this.rememberM) {
-            expireAfter = 24 * 60 * 60 * 1000;
+            expireAfter = res.data.data.expires_in * 1000;
           } else {
             expireAfter = 0;
-            // expireAfter = 60 * 60 * 1000 * 1;
           }
 
-          if (res.data.data.expire_in) {
-            if (res.data.data.expire_in > 0) {
+          if (res.data.data.expires_in) {
+            if (res.data.data.expires_in > 0) {
               this.setCookie(
                 {
                   logger: res.data.data.User.id,
@@ -98,12 +98,16 @@ export const useAuthStore = defineStore("authStore", {
           }
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
+
           this.isLoggedin = false;
           this.setStauts(false);
           result = false;
@@ -120,10 +124,10 @@ export const useAuthStore = defineStore("authStore", {
           result = res;
           this.authUser = res.data.data.User;
           this.setUserStorage(this.authUser);
-          expireAfter = res.data.data.expire_in * 1000;
+          expireAfter = res.data.data.expires_in * 1000;
 
-          if (res.data.data.expire_in) {
-            if (res.data.data.expire_in) {
+          if (res.data.data.expires_in) {
+            if (res.data.data.expires_in) {
               this.setCookie(
                 {
                   logger: res.data.data.User.id,
@@ -150,12 +154,15 @@ export const useAuthStore = defineStore("authStore", {
           }
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           this.isLoggedin = false;
           this.setUserStorage(false);
           result = false;
@@ -199,12 +206,17 @@ export const useAuthStore = defineStore("authStore", {
           this.setStauts(true);
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          if (!checkToken) {
+            mainStore().showAlert(errorMessage, 2);
+          }
           this.authUser = [];
           this.isLoggedin = false;
           this.setStauts(false);
@@ -238,21 +250,24 @@ export const useAuthStore = defineStore("authStore", {
         })
         .then((res) => {
           result = res;
-          window.location.reload();
           this.setCookie({}, 0);
           this.isLoggedin = false;
           this.setStauts(false);
           this.authUser = [];
           localStorage.removeItem("userInfo");
+          window.location.reload();
         })
         .catch((err) => {
           result = false;
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
       return result;
     },

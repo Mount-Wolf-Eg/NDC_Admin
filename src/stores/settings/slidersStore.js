@@ -42,12 +42,15 @@ export const sliderStore = defineStore("sliders", {
           this.allSliders = res.data.data;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
     },
 
@@ -71,12 +74,15 @@ export const sliderStore = defineStore("sliders", {
           this.ourValues = res.data.data.our_values;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
     },
 
@@ -94,12 +100,15 @@ export const sliderStore = defineStore("sliders", {
           this.slider = res.data.data;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
     },
     // suspended slider
@@ -116,12 +125,15 @@ export const sliderStore = defineStore("sliders", {
           this.suspendedSliders = res.data.data;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
     },
 
@@ -134,7 +146,6 @@ export const sliderStore = defineStore("sliders", {
             Authorization: `Bearer ${
               this.checkToken ? JSON.parse(this.checkToken)["token"] : ""
             }`,
-            flag: "all",
           },
         })
         .then((res) => {
@@ -142,12 +153,15 @@ export const sliderStore = defineStore("sliders", {
           result = res;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -168,12 +182,15 @@ export const sliderStore = defineStore("sliders", {
           mainStore().showAlert("item suspended suuccessfully", 1);
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -196,12 +213,15 @@ export const sliderStore = defineStore("sliders", {
           mainStore().showAlert("item restored suuccessfully", 1);
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -225,12 +245,15 @@ export const sliderStore = defineStore("sliders", {
           this.getSingleSliderType(type);
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -254,12 +277,15 @@ export const sliderStore = defineStore("sliders", {
           this.getSingleSliderType(type);
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -281,12 +307,15 @@ export const sliderStore = defineStore("sliders", {
           this.getAllSliders();
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;

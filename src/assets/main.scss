@@ -17,8 +17,9 @@
   --fw-ex-bold: 900;
 
   // border radius
-  --brd-radius: 12px;
-  --brd-radius-sm: 8px;
+  --brd-radius-sm: 0.8rem;
+  --brd-radius: 1.2rem;
+  --brd-radius-md: 0.9rem;
 
   //line height
 
@@ -473,7 +474,7 @@ body {
   font-size: var(--fs-14) !important;
   width: 5rem;
   height: 6rem;
-  border-radius: 1.2rem;
+  border-radius: var(--brd-radius);
   color: #fff;
   margin: 2rem 0;
   &:hover {
@@ -497,7 +498,7 @@ body {
   }
   button {
     background-color: var(--col-error);
-    border-radius: 1.2rem;
+    border-radius: var(--brd-radius);
     width: 5rem;
     height: 2.5rem;
     color: #fff;

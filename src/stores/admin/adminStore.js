@@ -35,12 +35,15 @@ export const useAdminStore = defineStore("adminStore", {
           this.allAdmins = res.data.data;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
     },
     // active admins
@@ -57,12 +60,15 @@ export const useAdminStore = defineStore("adminStore", {
           this.activeAdmins = res.data.data;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
     },
     // suspended admins
@@ -79,12 +85,15 @@ export const useAdminStore = defineStore("adminStore", {
           this.suspendedAdmins = res.data.data;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
     },
     // admin
@@ -103,12 +112,15 @@ export const useAdminStore = defineStore("adminStore", {
           result = res;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -129,12 +141,15 @@ export const useAdminStore = defineStore("adminStore", {
           mainStore().showAlert("Admin suspended suuccessfully", 1);
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -155,12 +170,15 @@ export const useAdminStore = defineStore("adminStore", {
           mainStore().showAlert("Admin restored suuccessfully", 1);
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -182,12 +200,15 @@ export const useAdminStore = defineStore("adminStore", {
           result = res;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -209,12 +230,15 @@ export const useAdminStore = defineStore("adminStore", {
           this.getAllAdmins();
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -238,12 +262,15 @@ export const useAdminStore = defineStore("adminStore", {
           this.getActiveAdmins();
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;

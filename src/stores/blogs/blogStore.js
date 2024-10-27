@@ -34,12 +34,15 @@ export const useBlogStore = defineStore("blogStore", {
           this.allCategories = res.data.data;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
     },
     async getActiveCategoryPosts() {
@@ -55,12 +58,15 @@ export const useBlogStore = defineStore("blogStore", {
           this.activeCategories = res.data.data;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
     },
     async getSuspendedCategoryPosts() {
@@ -76,12 +82,15 @@ export const useBlogStore = defineStore("blogStore", {
           this.susbendedCategories = res.data.data;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
         });
     },
     async getCategPost(id) {
@@ -100,12 +109,15 @@ export const useBlogStore = defineStore("blogStore", {
           result = res;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -125,12 +137,15 @@ export const useBlogStore = defineStore("blogStore", {
           mainStore().showAlert("Category suspended suuccessfully", 1);
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -150,12 +165,15 @@ export const useBlogStore = defineStore("blogStore", {
           mainStore().showAlert("Category restored suuccessfully", 1);
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -175,12 +193,15 @@ export const useBlogStore = defineStore("blogStore", {
           result = res;
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -201,12 +222,15 @@ export const useBlogStore = defineStore("blogStore", {
           this.getAllCategPosts();
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
@@ -227,12 +251,15 @@ export const useBlogStore = defineStore("blogStore", {
           this.getAllCategPosts();
         })
         .catch((err) => {
-          mainStore().showAlert(
-            Object.values(err.response.data.errors)[0][0]
-              ? Object.values(err.response.data.errors)[0][0]
-              : "Something went wrong, please try again",
-            2
-          );
+          let errorMessage = "Something went wrong, please try again";
+
+          if (err.response && err.response.data && err.response.data.errors) {
+            const errorArray = Object.values(err.response.data.errors);
+            if (errorArray.length > 0 && errorArray[0][0]) {
+              errorMessage = errorArray[0][0];
+            }
+          }
+          mainStore().showAlert(errorMessage, 2);
           result = false;
         });
       return result;
