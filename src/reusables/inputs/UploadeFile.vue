@@ -10,7 +10,7 @@
           class="h-100 center-row justify-content-between px-5 style-17"
           style="color: #464a61; font-size: var(--fs-12); font-weight: bold"
         >
-          <span>Add photo</span><span>Drop here</span>
+          <span>Drop here</span><span>Add photo</span>
         </div></label
       >
       <input
