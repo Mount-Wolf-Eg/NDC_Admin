@@ -47,6 +47,11 @@ const formData = ref("");
     border-radius: var(--brd-radius) !important;
     width: 100% !important;
     border: 1px solid var(--col-text);
+    & {
+      font-weight: bold;
+      font-size: 1.6rem;
+      color: var(--col-text);
+    }
   }
   .multiselect-dropdown {
     border-radius: var(--brd-radius) !important;
