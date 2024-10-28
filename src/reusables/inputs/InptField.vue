@@ -8,7 +8,7 @@
       >{{ label }}</label
     >
     <input
-      type="text"
+      :type="typ"
       class="inpt inpt-body"
       :placeholder="holder"
       :class="appear"
@@ -49,6 +49,11 @@ const props = defineProps({
     type: String,
     required: false,
     default: () => "",
+  },
+  typ: {
+    type: String,
+    required: false,
+    default: () => "text",
   },
 });
 

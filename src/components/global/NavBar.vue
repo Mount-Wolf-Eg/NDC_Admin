@@ -88,13 +88,15 @@
           <ul
             class="dropdown-menu text-small shadow w-100"
             aria-labelledby="dropdownUser3"
-            style=""
           >
-            <li>
-              <a class="dropdown-item">Settings</a>
+            <li
+              @click="router.push({ name: 'settings' })"
+              class="dropdown-item"
+            >
+              Settings
             </li>
-            <li @click="useAuthStore().logOut()">
-              <a class="dropdown-item">Sign out</a>
+            <li class="dropdown-item" @click="useAuthStore().logOut()">
+              Sign out
             </li>
           </ul>
         </div>
@@ -107,6 +109,8 @@
 import { useAuthStore } from "@/stores/auth/auth";
 import { storeToRefs } from "pinia";
 const { authUser } = storeToRefs(useAuthStore());
+import { useRouter } from "vue-router";
+const router = useRouter();
 const toggleTheme = () => {
   const htmlElement = document.querySelector("html");
   htmlElement.classList.toggle("light-theme");
