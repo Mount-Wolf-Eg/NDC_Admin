@@ -1,9 +1,13 @@
 <template>
   <div>
-    <div class="upload-field center-row justify-content-between">
+    <div
+      class="upload-field center-row justify-content-between"
+      @dragover.prevent="handleDragOver"
+      @drop.prevent="handleDrop"
+    >
       <label :for="`img-field-${props.for}`">
         <div
-          class="center-row justify-content-between px-5 style-17"
+          class="h-100 center-row justify-content-between px-5 style-17"
           style="color: #464a61; font-size: var(--fs-12); font-weight: bold"
         >
           <span>Add photo</span><span>Drop here</span>
@@ -88,7 +92,17 @@ const props = defineProps({
   },
 });
 
+const handleDragOver = (e) => {
+  e.preventDefault();
+};
+const handleDrop = (e) => {
+  const files = e.dataTransfer.files;
+  if (files.length) {
+    uploadFile({ target: { files } });
+  }
+};
 const uploadFile = (e) => {
+  console.log(e);
   const uploadedFile = e.target.files[0];
   if (!uploadedFile) {
     file.value = null;
