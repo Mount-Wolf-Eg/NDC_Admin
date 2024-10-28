@@ -307,7 +307,6 @@ const samePass = computed(() => {
 const validationRules = ref({
   name: {
     required,
-    alphaNum,
     minLength: minLength(3),
     maxLength: maxLength(100),
   },
