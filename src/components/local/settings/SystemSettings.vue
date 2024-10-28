@@ -76,7 +76,25 @@
             :for="'main -logo'"
             @fileData="formData.mainLogo.sourceM = $event"
           ></UploadeFile>
-
+          <!-- i frame -->
+          <div class="show_attachments mt-3">
+            <div class="row">
+              <div class="col col-3">
+                <div class="position-relative w-100">
+                  <img
+                    :src="formData.mainLogo.sourceM"
+                    style="
+                      border-radius: 10px;
+                      max-width: 100px !important;
+                      max-height: 100px !important;
+                    "
+                    alt=""
+                    class="mb-2"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
           <span
             class="center-row justify-content-start"
             v-for="(err, i) in validationObj.$errors"
@@ -227,17 +245,19 @@ const secondL = ref("");
 
 onMounted(async () => {
   await settingStore().getAllSettings();
+  console.log("all settings", allSettings.value);
 
-  // formData.value.name.ar = allSettings.value.settings?.name_ar;
-  // formData.value.name.en = allSettings.value.settings?.name_en;
-  // formData.value.mainLogo.sourceM = allSettings.value.settings?.main_logo_src;
-  // formData.value.mainLogo.descM = allSettings.value.settings?.second_logo_desc;
-  // formData.value.secondLogo.sourceS =
-  //   allSettings.value.setting?.second_logo_src;
-  // formData.value.secondLogo.descS =
-  //   allSettings.value.settings?.second_logo_desc;
-  // mainL.value = allSettings.value.settings?.main_logo_src;
-  // secondL.value = allSettings.value.settings?.second_logo_src;
+  formData.value.name.ar = allSettings.value?.name_ar;
+  formData.value.name.en = allSettings.value?.name_en;
+
+  formData.value.mainLogo.sourceM = allSettings.value?.main_logo_src;
+  formData.value.mainLogo.descM = allSettings.value?.main_logo_desc;
+
+  formData.value.secondLogo.sourceS = allSettings.value?.second_logo_src;
+  formData.value.secondLogo.descS = allSettings.value?.second_logo_desc;
+
+  mainL.value = allSettings.value?.main_logo_src;
+  secondL.value = allSettings.value?.second_logo_src;
 });
 
 const formData = ref({
@@ -287,26 +307,26 @@ const handleSetting = async () => {
       "settings[name_ar]": formData.value.name.ar,
       "settings[name_en]": formData.value.name.en,
       "settings[main_logo_src]": formData.value.mainLogo.sourceM,
-      "settings[second_logo_desc]": formData.value.mainLogo.descM,
+      "settings[main_logo_desc]": formData.value.mainLogo.descM,
       "settings[second_logo_src]": formData.value.secondLogo.sourceS,
       "settings[second_logo_desc]": formData.value.secondLogo.descS,
     });
-    if (res) {
-      formData.value = {
-        name: {
-          ar: "",
-          en: "",
-        },
-        mainLogo: {
-          sourceM: "",
-          descM: "",
-        },
-        secondLogo: {
-          sourceS: "",
-          descS: "",
-        },
-      };
-    }
+    // if (res) {
+    //   formData.value = {
+    //     name: {
+    //       ar: "",
+    //       en: "",
+    //     },
+    //     mainLogo: {
+    //       sourceM: "",
+    //       descM: "",
+    //     },
+    //     secondLogo: {
+    //       sourceS: "",
+    //       descS: "",
+    //     },
+    //   };
+    // }
     validationObj.value.$reset();
   }
   isLoading.value = false;
