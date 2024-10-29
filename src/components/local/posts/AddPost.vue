@@ -224,7 +224,7 @@ watch(
     formData.value.categId = props.singPost.category_id;
 
     selectData.value.value = props.singPost.category_id;
-    selectData.value.placeholder = props.singPost.category.name;
+    selectData.value.placeholder = props.singPost.category.name.en;
 
     formData.value.img = props.singPost.image;
   }

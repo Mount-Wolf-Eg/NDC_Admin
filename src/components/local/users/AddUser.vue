@@ -144,7 +144,7 @@
           <span class="row w-50">
             <!-- Name -->
             <span class="col">
-              <div style="position: relative; background-color: red !important">
+              <div style="position: relative">
                 <InptField
                   :typ="`${showPass ? 'text' : 'password'}`"
                   v-model="formData.password"
