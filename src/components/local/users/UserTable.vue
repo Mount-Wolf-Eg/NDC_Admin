@@ -96,10 +96,13 @@
                   />
                 </svg>
               </button>
+
               <button
                 type="button"
                 class="btn border-0"
-                @click="removeUser(admin.id)"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                @click="val = admin.id"
               >
                 <svg
                   class="delete-btn"
@@ -119,16 +122,19 @@
         </tr>
       </template>
     </ReusTable>
+    <ConfirmationMsg :itemid="val" @deleteItem="removeUser($event)" />
   </div>
 </template>
 
 <script setup>
 import moment from "moment";
+import ConfirmationMsg from "@/reusables/components/ConfirmationMsg.vue";
 import ReusTable from "@/reusables/components/ReusTable.vue";
 import { ref, computed, onMounted, defineEmits } from "vue";
 import { useAdminStore } from "@/stores/admin/adminStore";
 import { useRouter } from "vue-router";
 const router = useRouter();
+const val = ref();
 
 import { storeToRefs } from "pinia";
 const { allAdmins, admin } = storeToRefs(useAdminStore());
