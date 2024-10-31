@@ -1,7 +1,12 @@
 <template>
   <div class="user-info">
     <div class="user-images">
-      <img v-if="admin.image" :src="admin.image" alt="user image" />
+      <img
+        v-if="admin.image"
+        :src="admin.image"
+        style="width: 15rem; height: auto"
+        alt="user image"
+      />
       <div v-else class="center-row align-items-center gap-4">
         <div
           style="

@@ -85,7 +85,9 @@
               <button
                 type="button"
                 class="btn border-0"
-                @click="removeQuestion(faq.id)"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                @click="val = faq.id"
               >
                 <svg
                   class="delete-btn"
@@ -105,27 +107,28 @@
         </tr>
       </template>
     </ReusTable>
+    <ConfirmationMsg @deleteItem="removeQuestion(val)" />
   </div>
 </template>
 
 <script setup>
+import ConfirmationMsg from "@/reusables/components/ConfirmationMsg.vue";
 import moment from "moment";
 import ReusTable from "@/reusables/components/ReusTable.vue";
 import { ref, computed, onMounted, defineEmits } from "vue";
-
 import { FAQStore } from "@/stores/settings/FAQ";
 import { useRouter } from "vue-router";
-const router = useRouter();
-
 import { storeToRefs } from "pinia";
-const { allQuestions, activeQuestions, suspendedQuestions, question } =
-  storeToRefs(FAQStore());
-
-const emit = defineEmits(["editQuestion"]);
 
 onMounted(async () => {
   await FAQStore().getAllQuestions();
 });
+
+const { allQuestions, activeQuestions, suspendedQuestions, question } =
+  storeToRefs(FAQStore());
+const emit = defineEmits(["editQuestion"]);
+const val = ref();
+const router = useRouter();
 
 const toggleStatus = async (id, e) => {
   if (e.target.checked) {

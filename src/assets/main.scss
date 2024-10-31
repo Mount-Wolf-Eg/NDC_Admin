@@ -291,8 +291,7 @@ body {
 .eye {
   position: absolute;
   bottom: 50%;
-  right: 5%;
-  transform: translateY(50%);
+  right: 10px !important;
 }
 
 // validation styles

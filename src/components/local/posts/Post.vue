@@ -9,7 +9,7 @@
           data-bs-toggle="modal"
           data-bs-target="#addPost"
         >
-          Add FAQ
+          Add New
         </button>
       </template>
     </HelperButtons>

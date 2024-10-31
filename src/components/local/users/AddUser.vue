@@ -122,7 +122,10 @@
           <span class="row w-100">
             <!-- role -->
             <span class="col">
-              <UploadeFile @fileData="formData.img = $event"></UploadeFile>
+              <UploadeFile
+                @fileData="formData.img = $event"
+                :reset="resetImg"
+              ></UploadeFile>
               <img
                 v-if="formData.img"
                 class="mt-3"
@@ -294,12 +297,11 @@ import UploadeFile from "@/reusables/inputs/UploadeFile.vue";
 import { storeToRefs } from "pinia";
 import { roleStore } from "@/stores/roles/roleStore";
 import { useAdminStore } from "@/stores/admin/adminStore";
-
 const { roles, role } = storeToRefs(roleStore());
 const { allAdmins } = storeToRefs(useAdminStore());
 const showPass = ref(false);
 const showConfirm = ref(false);
-
+const resetImg = ref(false);
 // validation
 import useVuelidator from "@vuelidate/core";
 import {
@@ -422,6 +424,10 @@ const validationObj = useVuelidator(validationRules, formData);
 const closeModal = () => {
   resetFormData();
   emit("resetUser");
+  resetImg.value = true;
+  setTimeout(() => {
+    resetImg.value = false;
+  }, 500);
   document.querySelector("#close-modal").click();
 };
 

@@ -120,6 +120,7 @@
           <span class="row w-100">
             <span class="col">
               <UploadeFile
+                :reset="resetImg"
                 :for="'img'"
                 @fileData="formData.img = $event"
               ></UploadeFile>
@@ -177,6 +178,7 @@ import { ref, watch, defineProps, onMounted } from "vue";
 
 const emit = defineEmits(["resetPost"]);
 const isLoading = ref(false);
+const resetImg = ref(false);
 
 const props = defineProps({
   singPost: {
@@ -268,6 +270,10 @@ const validationObj = useVuelidator(validationRules, formData);
 const closeModal = () => {
   resetFormData();
   emit("resetPost");
+  resetImg.value = true;
+  setTimeout(() => {
+    resetImg.value = false;
+  }, 500);
   document.querySelector("#close-modal").click();
 };
 

@@ -44,12 +44,12 @@
           </td>
           <td
             :style="`${
-              admin.status == 'active'
+              admin.deleted_at == null
                 ? 'color: var(--col-success) !important'
                 : 'color: var(--col-error) !important'
             }`"
           >
-            {{ admin.status }}
+            {{ admin.deleted_at == null ? "active" : "susbended" }}
           </td>
 
           <td style="width: 15%">
@@ -122,7 +122,7 @@
         </tr>
       </template>
     </ReusTable>
-    <ConfirmationMsg :itemid="val" @deleteItem="removeUser($event)" />
+    <ConfirmationMsg @deleteItem="removeUser(val)" />
   </div>
 </template>
 

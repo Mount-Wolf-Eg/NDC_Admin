@@ -110,7 +110,10 @@
           <span class="row w-100">
             <!-- role -->
             <span class="col">
-              <UploadeFile @fileData="formData.img = $event"></UploadeFile>
+              <UploadeFile
+                :reset="resetImg"
+                @fileData="formData.img = $event"
+              ></UploadeFile>
               <img
                 v-if="formData.img"
                 class="mt-3"
@@ -166,6 +169,7 @@ import { ref, watch, defineProps } from "vue";
 
 const emit = defineEmits(["resetSuccess"]);
 const isLoading = ref(false);
+const resetImg = ref(false);
 
 const props = defineProps({
   partner: {
@@ -230,6 +234,10 @@ const validationObj = useVuelidator(validationRules, formData);
 const closeModal = () => {
   resetFormData();
   emit("resetSuccess");
+  resetImg.value = true;
+  setTimeout(() => {
+    resetImg.value = false;
+  }, 500);
   document.querySelector("#close-modal").click();
 };
 

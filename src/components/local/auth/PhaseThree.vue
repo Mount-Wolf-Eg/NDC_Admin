@@ -3,9 +3,9 @@
     <form
       action="#"
       @submit.prevent="forgetPassword"
-      class="center-col justify-content-arround h-100 w-100"
+      class="d-flex flex-column justify-content-between h-100 w-100"
     >
-      <span class="row w-100">
+      <span class="row w-100 gap-5">
         <div class="col-12 inpt-box" style="position: relative">
           <!-- <InptField
             v-model="formData.new_password"
@@ -18,7 +18,7 @@
             name="Password"
             placeholder="Enter New Password"
             v-model="formData.new_password"
-            class="admin-register"
+            class="sign-field w-100"
             :disabled="btnLoadin"
             :class="checkErrName(['new_password']) ? 'err-border' : ''"
           />
@@ -79,7 +79,7 @@
             name="Password"
             placeholder="Confirm Password"
             v-model="formData.confirm_password"
-            class="admin-register"
+            class="sign-field w-100"
             :disabled="btnLoadin"
             :class="checkErrName(['confirm_password']) ? 'err-border' : ''"
           />

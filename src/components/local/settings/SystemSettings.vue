@@ -245,7 +245,6 @@ const secondL = ref("");
 
 onMounted(async () => {
   await settingStore().getAllSettings();
-  console.log("all settings", allSettings.value);
 
   formData.value.name.ar = allSettings.value?.name_ar;
   formData.value.name.en = allSettings.value?.name_en;

@@ -75,7 +75,6 @@ import { mainStore } from "@/stores/mainStore";
 import { ref, watch } from "vue";
 
 const userImg = ref("");
-
 const file = ref(null);
 const emits = defineEmits(["fileData"]);
 const props = defineProps({
@@ -84,14 +83,25 @@ const props = defineProps({
     default: false,
     required: false,
   },
-
   for: {
     type: String,
     default: "",
     required: false,
   },
+  reset: {
+    type: Boolean,
+    default: false,
+  },
 });
 
+watch(
+  () => props.reset,
+  (newVal) => {
+    if (newVal) {
+      userImg.value = "";
+    }
+  }
+);
 const handleDragOver = (e) => {
   e.preventDefault();
 };
@@ -102,7 +112,6 @@ const handleDrop = (e) => {
   }
 };
 const uploadFile = (e) => {
-  console.log(e);
   const uploadedFile = e.target.files[0];
   if (!uploadedFile) {
     file.value = null;

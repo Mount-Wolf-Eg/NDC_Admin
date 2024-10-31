@@ -44,7 +44,7 @@
             <button
               type="button"
               class="confirm-btn"
-              @click="emits('deleteItem', itemid)"
+              @click="emits('deleteItem')"
               data-bs-dismiss="modal"
               aria-label="Close"
             >
@@ -60,12 +60,6 @@
 <script setup>
 import { defineEmits, watch } from "vue";
 const emits = defineEmits(["deleteItem"]);
-const props = defineProps({
-  itemid: {
-    type: Number,
-    required: false,
-  },
-});
 </script>
 
 <style lang="scss" scoped>
@@ -131,5 +125,5 @@ const props = defineProps({
                   />
                 </svg>
               </button> -->
-<!-- <ConfirmationMsg :itemid="val" @deleteItem="removeUser($event)" /> -->
+<!-- <ConfirmationMsg   @deleteItem="removeUser(val)" /> -->
 <!-- const val = ref(); -->
