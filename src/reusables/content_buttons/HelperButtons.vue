@@ -16,8 +16,15 @@
         placeholder="Search"
         v-model="searchText"
       />
-      <button type="button" class="search-btn">Search</button>
-      <button type="button" class="reset-btn" @click="searchText = ''">
+      <button
+        type="button"
+        class="search-btn"
+        @click="filterData()"
+        :disabled="!searchText"
+      >
+        Search
+      </button>
+      <button type="button" class="reset-btn" @click="resetFilter()">
         Reset
       </button>
     </div>
@@ -25,17 +32,31 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useSearchStore } from "@/stores/search/searchStore";
+import { storeToRefs } from "pinia";
+
+const { filteredData } = storeToRefs(useSearchStore());
 const searchText = ref("");
+
+const props = defineProps({
+  route: {
+    type: String,
+    required: true,
+  },
+});
+const filterData = async () => {
+  const res = await useSearchStore().getFilteredData(props.route, {
+    search: searchText.value,
+  });
+  if (res) {
+    searchText.value = "";
+  }
+};
+const resetFilter = async () => {
+  searchText.value = "";
+  useSearchStore().filteredData = [];
+};
 </script>
 
 <style lang="scss" scoped></style>
-
-<!-- <button
-        type="button"
-        id="openModal"
-        class="add-admin"
-        data-bs-toggle="modal"
-        data-bs-target="#addAdmin"
-      >
-       </button> -->

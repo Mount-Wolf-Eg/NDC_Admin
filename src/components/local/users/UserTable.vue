@@ -130,13 +130,15 @@
 import moment from "moment";
 import ConfirmationMsg from "@/reusables/components/ConfirmationMsg.vue";
 import ReusTable from "@/reusables/components/ReusTable.vue";
-import { ref, computed, onMounted, defineEmits } from "vue";
+import { ref, computed, onMounted, defineEmits, watch } from "vue";
 import { useAdminStore } from "@/stores/admin/adminStore";
 import { useRouter } from "vue-router";
+import { storeToRefs } from "pinia";
+import { useSearchStore } from "@/stores/search/searchStore";
+const { filteredData } = storeToRefs(useSearchStore());
 const router = useRouter();
 const val = ref();
 
-import { storeToRefs } from "pinia";
 const { allAdmins, admin } = storeToRefs(useAdminStore());
 
 const emit = defineEmits(["editUser"]);
