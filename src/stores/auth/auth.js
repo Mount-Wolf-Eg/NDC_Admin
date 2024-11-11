@@ -21,7 +21,11 @@ export const useAuthStore = defineStore("authStore", {
           {}
         )["Admin"];
       if (checkToken) {
-        if (localStorage.getItem("userInfo")) {
+        if (
+          localStorage.getItem("userInfo") &&
+          localStorage.getItem("userInfo") == "null" &&
+          localStorage.getItem("userInfo") == "undefined"
+        ) {
           state.authUser = JSON.parse(localStorage.getItem("userInfo"));
           state.isLoggedin = true;
           state.getUserData();
