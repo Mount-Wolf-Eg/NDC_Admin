@@ -117,17 +117,26 @@
 <script setup>
 import moment from "moment";
 import ReusTable from "@/reusables/components/ReusTable.vue";
-import { ref, computed, onMounted, defineEmits } from "vue";
-
+import { ref, computed, onMounted, defineEmits, watch } from "vue";
 import { usePostStore } from "@/stores/posts/postStore";
 import { useRouter } from "vue-router";
-const router = useRouter();
-
 import { storeToRefs } from "pinia";
+import { useSearchStore } from "@/stores/search/searchStore";
+const { filteredData } = storeToRefs(useSearchStore());
+const router = useRouter();
 const { allPosts, post } = storeToRefs(usePostStore());
 
 const emit = defineEmits(["editPost"]);
-
+watch(
+  () => filteredData.value,
+  async (newVal) => {
+    if (newVal.length > 0) {
+      allPosts.value = newVal;
+    } else {
+      await usePostStore().getAllPosts();
+    }
+  }
+);
 onMounted(async () => {
   await usePostStore().getAllPosts();
 });

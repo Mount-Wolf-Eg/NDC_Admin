@@ -1,6 +1,6 @@
 <template>
   <div class="users-page">
-    <HelperButtons>
+    <HelperButtons :route="'faqs'">
       <template #add-btn>
         <button
           type="button"

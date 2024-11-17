@@ -1,6 +1,6 @@
 <template>
   <div class="users-page">
-    <HelperButtons>
+    <HelperButtons :route="'blog_posts'">
       <template #add-btn>
         <button
           type="button"

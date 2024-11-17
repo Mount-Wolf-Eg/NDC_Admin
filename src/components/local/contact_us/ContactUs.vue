@@ -1,9 +1,5 @@
 <template>
   <div class="users-page">
-    <HelperButtons>
-      <template #add-btn> </template>
-    </HelperButtons>
-
     <ReplyMessage :repMsg="item"></ReplyMessage>
     <ContactUsTable @msgId="item = $event"></ContactUsTable>
   </div>

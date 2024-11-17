@@ -15,12 +15,13 @@
         id="search"
         placeholder="Search"
         v-model="searchText"
+        @keyup.enter="filterData()"
       />
       <button
         type="button"
         class="search-btn"
         @click="filterData()"
-        :disabled="!searchText"
+        :disabled="!searchText.trim()"
       >
         Search
       </button>
@@ -42,16 +43,23 @@ const searchText = ref("");
 const props = defineProps({
   route: {
     type: String,
-    required: true,
+    required: false,
   },
 });
+
+watch(
+  () => searchText.value,
+  (newVal) => {
+    if (searchText.value?.length == 0) {
+      filteredData.value = [];
+    }
+  }
+);
+
 const filterData = async () => {
   const res = await useSearchStore().getFilteredData(props.route, {
     search: searchText.value,
   });
-  if (res) {
-    searchText.value = "";
-  }
 };
 const resetFilter = async () => {
   searchText.value = "";

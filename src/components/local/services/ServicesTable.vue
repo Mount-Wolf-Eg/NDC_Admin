@@ -131,22 +131,30 @@
 
 <script setup>
 import moment from "moment";
+import { ref, computed, onMounted, defineEmits, watch } from "vue";
 import ReusTable from "@/reusables/components/ReusTable.vue";
-import { ref, computed, onMounted, defineEmits } from "vue";
-
 import { useServiceStore } from "@/stores/settings/serviceStore";
-
 import { useRouter } from "vue-router";
+import { storeToRefs } from "pinia";
+import { useSearchStore } from "@/stores/search/searchStore";
+const { filteredData } = storeToRefs(useSearchStore());
 const router = useRouter();
 
 const { allServices, activeServices, suspendedServices, service } = storeToRefs(
   useServiceStore()
 );
 
-import { storeToRefs } from "pinia";
-
 const emit = defineEmits(["editMainService"]);
-
+watch(
+  () => filteredData.value,
+  async (newVal) => {
+    if (newVal.length > 0) {
+      allServices.value = newVal;
+    } else {
+      await useServiceStore().getAllServices();
+    }
+  }
+);
 onMounted(async () => {
   await useServiceStore().getAllServices();
 });

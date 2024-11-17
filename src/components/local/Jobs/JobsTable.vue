@@ -128,19 +128,28 @@
 
 <script setup>
 import moment from "moment";
+import { storeToRefs } from "pinia";
 import ReusTable from "@/reusables/components/ReusTable.vue";
-import { ref, computed, onMounted, defineEmits } from "vue";
+import { ref, computed, onMounted, defineEmits, watch } from "vue";
 import { useRouter } from "vue-router";
-
+import { useSearchStore } from "@/stores/search/searchStore";
 import { useJobsStore } from "@/stores/jobs/jobsStore";
+const { filteredData } = storeToRefs(useSearchStore());
 const { allJobs, job } = storeToRefs(useJobsStore());
 
 const router = useRouter();
 
-import { storeToRefs } from "pinia";
-
 const emit = defineEmits(["editJob"]);
-
+watch(
+  () => filteredData.value,
+  async (newVal) => {
+    if (newVal.length > 0) {
+      allJobs.value = newVal;
+    } else {
+      await useJobsStore().getAllJobs();
+    }
+  }
+);
 onMounted(async () => {
   await useJobsStore().getAllJobs();
 });

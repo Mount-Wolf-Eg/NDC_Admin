@@ -113,17 +113,27 @@
 <script setup>
 import moment from "moment";
 import ReusTable from "@/reusables/components/ReusTable.vue";
-import { ref, computed, onMounted, defineEmits } from "vue";
-
+import { ref, computed, onMounted, defineEmits, watch } from "vue";
 import { useBlogStore } from "@/stores/blogs/blogStore";
 import { useRouter } from "vue-router";
+import { useSearchStore } from "@/stores/search/searchStore";
+import { storeToRefs } from "pinia";
+const { filteredData } = storeToRefs(useSearchStore());
 const router = useRouter();
 
-import { storeToRefs } from "pinia";
 const { allCategories, category } = storeToRefs(useBlogStore());
 
 const emit = defineEmits(["editCategories"]);
-
+watch(
+  () => filteredData.value,
+  async (newVal) => {
+    if (newVal.length > 0) {
+      allCategories.value = newVal;
+    } else {
+      await useBlogStore().getAllCategPosts();
+    }
+  }
+);
 onMounted(async () => {
   await useBlogStore().getAllCategPosts();
 });

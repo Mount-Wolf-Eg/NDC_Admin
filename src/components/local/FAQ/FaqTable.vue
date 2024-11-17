@@ -112,13 +112,26 @@
 </template>
 
 <script setup>
+import { ref, computed, onMounted, defineEmits, watch } from "vue";
 import ConfirmationMsg from "@/reusables/components/ConfirmationMsg.vue";
 import moment from "moment";
 import ReusTable from "@/reusables/components/ReusTable.vue";
-import { ref, computed, onMounted, defineEmits } from "vue";
 import { FAQStore } from "@/stores/settings/FAQ";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
+import { useSearchStore } from "@/stores/search/searchStore";
+const { filteredData } = storeToRefs(useSearchStore());
+
+watch(
+  () => filteredData.value,
+  async (newVal) => {
+    if (newVal.length > 0) {
+      allQuestions.value = newVal;
+    } else {
+      await FAQStore().getAllQuestions();
+    }
+  }
+);
 
 onMounted(async () => {
   await FAQStore().getAllQuestions();

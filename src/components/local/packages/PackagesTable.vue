@@ -156,8 +156,9 @@
 <script setup>
 import moment from "moment";
 import ReusTable from "@/reusables/components/ReusTable.vue";
-import { ref, computed, onMounted, defineEmits } from "vue";
-
+import { ref, computed, onMounted, defineEmits, watch } from "vue";
+import { useSearchStore } from "@/stores/search/searchStore";
+const { filteredData } = storeToRefs(useSearchStore());
 import { usePackageStore } from "@/stores/settings/packageStore";
 
 import { useRouter } from "vue-router";
@@ -171,6 +172,16 @@ import { storeToRefs } from "pinia";
 
 const emit = defineEmits(["editPackage"]);
 
+watch(
+  () => filteredData.value,
+  async (newVal) => {
+    if (newVal.length > 0) {
+      allPackages.value = newVal;
+    } else {
+      await usePackageStore().getAllPackages();
+    }
+  }
+);
 onMounted(async () => {
   await usePackageStore().getAllPackages();
 });

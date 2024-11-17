@@ -125,15 +125,25 @@
 <script setup>
 import moment from "moment";
 import ReusTable from "@/reusables/components/ReusTable.vue";
-import { ref, computed, onMounted, defineEmits } from "vue";
+import { ref, computed, onMounted, defineEmits, watch } from "vue";
 import { sliderStore } from "@/stores/settings/slidersStore";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
-
+import { useSearchStore } from "@/stores/search/searchStore";
+const { filteredData } = storeToRefs(useSearchStore());
 const router = useRouter();
 const { slider, singleSlide } = storeToRefs(sliderStore());
 const emit = defineEmits(["editValue"]);
-
+watch(
+  () => filteredData.value,
+  async (newVal) => {
+    if (newVal.length > 0 && newVal[0].slider_type == "our_values") {
+      slider.value = newVal;
+    } else {
+      await sliderStore().getSingleSliderType("our_values");
+    }
+  }
+);
 onMounted(async () => {
   await sliderStore().getSingleSliderType("our_values");
 });

@@ -1,6 +1,8 @@
 <template>
   <div class="users-page">
-    <HelperButtons>
+    <
+    <HelperButtons :route="'categories'">
+      >
       <template #add-btn>
         <button
           type="button"

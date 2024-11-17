@@ -1,6 +1,8 @@
 <template>
   <div>
-    <ReusTable :header="['', 'Partner Name', 'Created', 'Status', 'Action']">
+    <ReusTable
+      :header="['', 'logo', 'Partner Name', 'Created', 'Status', 'Action']"
+    >
       <template #table>
         <tr v-for="partner in slider" :key="partner.id">
           <td>
@@ -27,6 +29,8 @@
               :src="partner.image"
               :alt="partner.description"
             />
+          </td>
+          <td>
             {{ partner.title }}
           </td>
 
@@ -117,12 +121,13 @@
 </template>
 
 <script setup>
+import { ref, watch, computed, onMounted, defineEmits } from "vue";
 import moment from "moment";
 import ReusTable from "@/reusables/components/ReusTable.vue";
-import { ref, computed, onMounted, defineEmits } from "vue";
-
 import { sliderStore } from "@/stores/settings/slidersStore";
 import { useRouter } from "vue-router";
+import { useSearchStore } from "@/stores/search/searchStore";
+const { filteredData } = storeToRefs(useSearchStore());
 const router = useRouter();
 
 const { slider, singleSlide } = storeToRefs(sliderStore());
@@ -130,6 +135,17 @@ const { slider, singleSlide } = storeToRefs(sliderStore());
 import { storeToRefs } from "pinia";
 
 const emit = defineEmits(["editPartner"]);
+
+watch(
+  () => filteredData.value,
+  async (newVal) => {
+    if (newVal.length > 0 && newVal[0].slider_type == "partners") {
+      slider.value = newVal;
+    } else {
+      await sliderStore().getSingleSliderType("partners");
+    }
+  }
+);
 
 onMounted(async () => {
   await sliderStore().getSingleSliderType("partners");

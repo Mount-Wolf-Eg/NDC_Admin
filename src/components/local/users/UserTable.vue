@@ -143,6 +143,17 @@ const { allAdmins, admin } = storeToRefs(useAdminStore());
 
 const emit = defineEmits(["editUser"]);
 
+watch(
+  () => filteredData.value,
+  async (newVal) => {
+    if (newVal.length > 0) {
+      allAdmins.value = newVal;
+    } else {
+      await useAdminStore().getAllAdmins();
+    }
+  }
+);
+
 onMounted(async () => {
   await useAdminStore().getAllAdmins();
 });
