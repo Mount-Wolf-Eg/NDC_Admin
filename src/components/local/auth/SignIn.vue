@@ -102,7 +102,7 @@
         </button>
 
         <button v-if="!btnLoadin" class="sign-btn" type="submit">Login</button>
-        <button v-else class="sign-btn" type="submit">
+        <button v-else class="sign-btn" type="submit" disabled>
           <span
             class="spinner-border spinner-border-sm fs-3"
             aria-hidden="true"

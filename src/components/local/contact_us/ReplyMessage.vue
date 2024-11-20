@@ -50,7 +50,7 @@
           <button v-if="!isLoading" type="submit" class="modal-add-btn mx-auto">
             Send
           </button>
-          <button v-else class="modal-add-btn mx-auto">
+          <button v-else class="modal-add-btn mx-auto" disabled>
             <div class="spinner-grow me-3" role="status"></div>
             <span> Loading...</span>
           </button>

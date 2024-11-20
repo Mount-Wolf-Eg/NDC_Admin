@@ -143,6 +143,7 @@
         class="sign-btn mt-4 mx-auto"
         type="submit"
         style="font-weight: normal !important"
+        disabled
       >
         <div class="spinner-grow me-3" role="status"></div>
         <span> Loading...</span>
