@@ -1,6 +1,6 @@
 <template>
   <div class="users-page">
-    <HelperButtons :route="'slider'">
+    <HelperButtons :route="'slider'" :slType="['main_resources']">
       <template #add-btn>
         <button
           type="button"

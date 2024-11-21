@@ -45,6 +45,10 @@ const props = defineProps({
     type: String,
     required: false,
   },
+  slType: {
+    type: Array,
+    required: false,
+  },
 });
 
 watch(
@@ -59,6 +63,7 @@ watch(
 const filterData = async () => {
   const res = await useSearchStore().getFilteredData(props.route, {
     search: searchText.value,
+    slider_type: props.slType?.length == 1 ? props.slType[0] : props.slType,
   });
 };
 const resetFilter = async () => {
