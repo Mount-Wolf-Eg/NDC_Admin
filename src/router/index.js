@@ -128,7 +128,7 @@ const router = createRouter({
       component: () =>
         import("@/components/local/customerReview/CustomerReview.vue"),
       meta: {
-        title: "Customer Review",
+        title: "Customer Reviews",
         requiresAuth: true,
       },
     },
@@ -148,7 +148,7 @@ const router = createRouter({
       name: "MainSlider",
       component: () => import("@/components/local/mainSlider/MainSlider.vue"),
       meta: {
-        title: "Main Slider",
+        title: "Header Slider",
         requiresAuth: true,
       },
     },

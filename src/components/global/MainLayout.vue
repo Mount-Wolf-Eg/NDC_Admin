@@ -6,7 +6,7 @@
         <SideBar></SideBar>
         <main class="content col">
           <div class="content-title">
-            {{ route.name || "Admin Dashboard" }}
+            {{ route.meta.title || "Admin Dashboard" }}
           </div>
           <div
             class="p-5 m-4 content-body"
