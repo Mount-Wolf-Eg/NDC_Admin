@@ -44,7 +44,7 @@
           </div>
         </button> -->
 
-      <button type="button" class="btn" @click="toggleTheme">
+      <!-- <button type="button" class="btn" @click="toggleTheme">
         <svg
           style="width: 2.4rem; height: 2.4rem"
           viewBox="0 0 24 24"
@@ -56,7 +56,7 @@
             fill="#464A61"
           />
         </svg>
-      </button>
+      </button> -->
       <button type="button" class="btn">
         <div class="dropdown">
           <a
