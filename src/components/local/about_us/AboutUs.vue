@@ -50,12 +50,16 @@
           >
         </span>
         <span class="col-6">
-          <InptField
+          <TextEditor
+            class="t-editor"
+            v-model="formData.aboutUs.acontEn"
+          ></TextEditor>
+          <!-- <InptField
             v-model="formData.aboutUs.acontEn"
             :holder="'content'"
             :label="'About us Content (EN)'"
             :appear="checkErrName(['acontEn']) ? 'err-border' : ''"
-          ></InptField>
+          ></InptField> -->
           <span
             class="center-row justify-content-start"
             style="margin-top: -1rem; margin-bottom: 1rem"
@@ -68,13 +72,17 @@
         </span>
 
         <span class="col-6">
-          <InptField
+          <!-- <InptField
             style="direction: rtl !important"
             v-model="formData.aboutUs.acontAr"
             :label="'المحتوى بالعربي'"
             :holder="'المحتوى بالعربي'"
             :appear="checkErrName(['acontAr']) ? 'err-border' : ''"
-          ></InptField>
+          ></InptField> -->
+          <TextEditor
+            class="t-editor"
+            v-model="formData.aboutUs.acontAr"
+          ></TextEditor>
           <span
             class="center-row justify-content-start"
             style="margin-top: -1rem; margin-bottom: 1rem"
@@ -602,7 +610,7 @@
 import { onMounted, ref, watch } from "vue";
 import InptField from "@/reusables/inputs/InptField.vue";
 import UploadeFile from "@/reusables/inputs/UploadeFile.vue";
-
+import TextEditor from "@/reusables/ckEditor/TextEditor.vue";
 import { aboutUsStore } from "@/stores/settings/aboutUs";
 import { storeToRefs } from "pinia";
 
@@ -799,6 +807,7 @@ const handleSetting = async () => {
       };
     }
     validationObj.value.$reset();
+    window.location.reload();
   }
   isLoading.value = false;
 };
