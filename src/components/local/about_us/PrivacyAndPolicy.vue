@@ -173,6 +173,7 @@ import UploadeFile from "@/reusables/inputs/UploadeFile.vue";
 
 import { aboutUsStore } from "@/stores/settings/aboutUs";
 import { storeToRefs } from "pinia";
+const { privacyPolicy } = storeToRefs(aboutUsStore());
 
 import useVuelidator from "@vuelidate/core";
 import {
@@ -189,10 +190,6 @@ const isLoading = ref(false);
 const mainL = ref("");
 const secondL = ref("");
 
-onMounted(async () => {
-  await aboutUsStore().getAllAboutUs();
-});
-
 const formData = ref({
   termsAndConditions: {
     aTitleEn: "",
@@ -203,6 +200,18 @@ const formData = ref({
     aimgDescen: "",
     aimg: "",
   },
+});
+onMounted(async () => {
+  await aboutUsStore().getAllAboutUs();
+  formData.value.termsAndConditions = {
+    aTitleEn: privacyPolicy.value?.title?.en,
+    aTitleAr: privacyPolicy.value?.title?.ar,
+    acontEn: privacyPolicy.value?.content?.en,
+    acontAr: privacyPolicy.value?.content?.ar,
+    aimg: privacyPolicy.value?.image,
+    aimgDescar: privacyPolicy.value?.description?.ar,
+    aimgDescen: privacyPolicy.value?.description?.en,
+  };
 });
 
 const validationRules = ref({

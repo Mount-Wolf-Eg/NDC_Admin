@@ -1,5 +1,5 @@
 <template>
-  <div class="settings-page">
+  <main class="settings-page" v-if="!pageLoad">
     <form action="#" @submit.prevent="handleSetting" style="position: relative">
       <!-- one -->
       <span
@@ -50,6 +50,7 @@
           >
         </span>
         <span class="col-6">
+          <label class="inpt-label mb-4">Content (EN)</label>
           <TextEditor
             class="t-editor"
             v-model="formData.aboutUs.acontEn"
@@ -79,6 +80,7 @@
             :holder="'المحتوى بالعربي'"
             :appear="checkErrName(['acontAr']) ? 'err-border' : ''"
           ></InptField> -->
+          <label class="inpt-label mb-4">Content (AR)</label>
           <TextEditor
             class="t-editor"
             v-model="formData.aboutUs.acontAr"
@@ -602,7 +604,8 @@
         </button>
       </div>
     </form>
-  </div>
+  </main>
+  <main v-else>loadin...</main>
 </template>
 
 <script setup>
@@ -613,6 +616,10 @@ import UploadeFile from "@/reusables/inputs/UploadeFile.vue";
 import TextEditor from "@/reusables/ckEditor/TextEditor.vue";
 import { aboutUsStore } from "@/stores/settings/aboutUs";
 import { storeToRefs } from "pinia";
+const { aboutUs, ourGoals, ourMission, ourVission } = storeToRefs(
+  aboutUsStore()
+);
+const pageLoad = ref(true);
 
 import useVuelidator from "@vuelidate/core";
 import {
@@ -628,10 +635,6 @@ required.$message = "Field is required";
 const isLoading = ref(false);
 const mainL = ref("");
 const secondL = ref("");
-
-onMounted(async () => {
-  await aboutUsStore().getAllAboutUs();
-});
 
 const formData = ref({
   aboutUs: {
@@ -672,10 +675,52 @@ const formData = ref({
   },
 });
 
+onMounted(async () => {
+  await aboutUsStore().getAllAboutUs();
+
+  formData.value.aboutUs = {
+    aTitleEn: aboutUs.value?.title?.en,
+    aTitleAr: aboutUs.value?.title?.ar,
+    acontEn: aboutUs.value?.content?.en,
+    acontAr: aboutUs.value?.content?.ar,
+    aimg: aboutUs.value?.image,
+    aimgDescar: aboutUs.value?.description?.ar,
+    aimgDescen: aboutUs.value?.description?.en,
+  };
+  formData.value.ourVission = {
+    vTitleEn: ourVission.value?.title?.en,
+    vTitleAr: ourVission.value?.title?.ar,
+    vcontEn: ourVission.value?.content?.en,
+    vcontAr: ourVission.value?.content?.ar,
+    vimg: ourVission.value?.image,
+    vimgDescar: ourVission.value?.description?.ar,
+    vimgDescen: ourVission.value?.description?.en,
+  };
+  formData.value.ourMission = {
+    mTitleEn: ourMission.value?.title?.en,
+    mTitleAr: ourMission.value?.title?.ar,
+    mcontEn: ourMission.value?.content?.en,
+    mcontAr: ourMission.value?.content?.ar,
+    mimg: ourMission.value?.image,
+    mimgDescar: ourMission.value?.description?.ar,
+    mimgDescen: ourMission.value?.description?.en,
+  };
+  formData.value.ourGoals = {
+    gTitleEn: ourGoals.value?.title?.en,
+    gTitleAr: ourGoals.value?.title?.ar,
+    gcontEn: ourGoals.value?.content?.en,
+    gcontAr: ourGoals.value?.content?.ar,
+    gimg: ourGoals.value?.image,
+    gimgDescar: ourGoals.value?.description?.ar,
+    gimgDescen: ourGoals.value?.description?.en,
+  };
+  pageLoad.value = false;
+});
+
 const validationRules = ref({
   aboutUs: {
-    aTitleAr: { required, minLength: minLength(3), maxLength: maxLength(500) },
-    aTitleEn: { required, minLength: minLength(3), maxLength: maxLength(500) },
+    aTitleAr: { required, minLength: minLength(3), maxLength: maxLength(1000) },
+    aTitleEn: { required, minLength: minLength(3), maxLength: maxLength(1000) },
     acontAr: { required, minLength: minLength(3), maxLength: maxLength(2000) },
     acontEn: { required, minLength: minLength(3), maxLength: maxLength(2000) },
     aimg: { required },
@@ -683,8 +728,8 @@ const validationRules = ref({
     aimgDescen: { required },
   },
   ourVission: {
-    vTitleAr: { required, minLength: minLength(3), maxLength: maxLength(500) },
-    vTitleEn: { required, minLength: minLength(3), maxLength: maxLength(500) },
+    vTitleAr: { required, minLength: minLength(3), maxLength: maxLength(1000) },
+    vTitleEn: { required, minLength: minLength(3), maxLength: maxLength(1000) },
     vcontAr: { required, minLength: minLength(3), maxLength: maxLength(2000) },
     vcontEn: { required, minLength: minLength(3), maxLength: maxLength(2000) },
     vimg: { required },
@@ -692,8 +737,8 @@ const validationRules = ref({
     vimgDescen: { required },
   },
   ourMission: {
-    mTitleAr: { required, minLength: minLength(3), maxLength: maxLength(500) },
-    mTitleEn: { required, minLength: minLength(3), maxLength: maxLength(500) },
+    mTitleAr: { required, minLength: minLength(3), maxLength: maxLength(1000) },
+    mTitleEn: { required, minLength: minLength(3), maxLength: maxLength(1000) },
     mcontAr: { required, minLength: minLength(3), maxLength: maxLength(2000) },
     mcontEn: { required, minLength: minLength(3), maxLength: maxLength(2000) },
     mimg: { required },
@@ -701,8 +746,8 @@ const validationRules = ref({
     mimgDescen: { required },
   },
   ourGoals: {
-    gTitleAr: { required, minLength: minLength(3), maxLength: maxLength(500) },
-    gTitleEn: { required, minLength: minLength(3), maxLength: maxLength(500) },
+    gTitleAr: { required, minLength: minLength(3), maxLength: maxLength(1000) },
+    gTitleEn: { required, minLength: minLength(3), maxLength: maxLength(1000) },
     gcontAr: { required, minLength: minLength(3), maxLength: maxLength(2000) },
     gcontEn: { required, minLength: minLength(3), maxLength: maxLength(2000) },
     gimg: { required },

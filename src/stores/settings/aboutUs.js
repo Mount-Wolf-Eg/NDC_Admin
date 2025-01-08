@@ -30,6 +30,7 @@ export const aboutUsStore = defineStore("aboutUs", {
             Authorization: `Bearer ${
               this.checkToken ? JSON.parse(this.checkToken)["token"] : ""
             }`,
+            flag: "all",
           },
         })
         .then((res) => {

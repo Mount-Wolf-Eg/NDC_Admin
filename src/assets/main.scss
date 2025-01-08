@@ -509,3 +509,10 @@ body {
   bottom: 30%;
   right: 2%;
 }
+.inpt-label {
+  color: var(--col-text) !important;
+  font-size: var(--fs-16) !important;
+  font-weight: var(--fw-bold) !important;
+  line-height: var(--line-h-20) !important;
+  margin: 2rem 0;
+}
